@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPRINT — Venues & Clients</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <canvas id="bgCanvas"></canvas>
+  <div class="grid-3d"></div>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="brand">IMPRINT<span class="brand-dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="music.html">Music</a>
+      <a href="gigs.html">Gigs</a>
+      <a href="venues.html" class="active">Venues</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="booking.html" class="nav-cta">Bookings</a>
+    </nav>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </header>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <!-- 3D Spinning Disc Decoration -->
+    <div class="page-dj-deco">
+      <svg viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="discGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7b2fff" />
+            <stop offset="50%" stop-color="#c026d3" />
+            <stop offset="100%" stop-color="#00d4ff" />
+          </linearGradient>
+          <filter id="glow2">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <!-- Outer ring -->
+        <circle cx="140" cy="140" r="130" fill="none" stroke="url(#discGrad)" stroke-width="2" opacity="0.4" />
+        <circle cx="140" cy="140" r="120" fill="none" stroke="rgba(0,212,255,0.15)" stroke-width="1"
+          stroke-dasharray="8 4" />
+        <!-- Disc -->
+        <circle cx="140" cy="140" r="110" fill="rgba(10,5,30,0.95)" stroke="url(#discGrad)" stroke-width="1.5" />
+        <circle cx="140" cy="140" r="85" fill="rgba(8,3,22,1)" stroke="rgba(123,47,255,0.3)" stroke-width="1" />
+        <circle cx="140" cy="140" r="60" fill="rgba(5,2,18,1)" stroke="rgba(0,212,255,0.2)" stroke-width="1" />
+        <circle cx="140" cy="140" r="35" fill="rgba(3,1,12,1)" stroke="rgba(123,47,255,0.4)" stroke-width="1" />
+        <!-- Vinyl grooves -->
+        <circle cx="140" cy="140" r="100" fill="none" stroke="rgba(123,47,255,0.08)" stroke-width="0.8"
+          stroke-dasharray="3 2" />
+        <circle cx="140" cy="140" r="92" fill="none" stroke="rgba(0,212,255,0.06)" stroke-width="0.8"
+          stroke-dasharray="3 2" />
+        <circle cx="140" cy="140" r="76" fill="none" stroke="rgba(123,47,255,0.08)" stroke-width="0.8"
+          stroke-dasharray="3 2" />
+        <circle cx="140" cy="140" r="68" fill="none" stroke="rgba(0,212,255,0.06)" stroke-width="0.8"
+          stroke-dasharray="3 2" />
+        <circle cx="140" cy="140" r="50" fill="none" stroke="rgba(123,47,255,0.08)" stroke-width="0.8"
+          stroke-dasharray="3 2" />
+        <!-- Label area -->
+        <circle cx="140" cy="140" r="32" fill="rgba(123,47,255,0.2)" stroke="url(#discGrad)" stroke-width="1.5" />
+        <!-- Center spindle -->
+        <circle cx="140" cy="140" r="8" fill="#00d4ff" filter="url(#glow2)" />
+        <!-- Light reflections -->
+        <ellipse cx="100" cy="100" rx="15" ry="8" fill="rgba(255,255,255,0.04)" transform="rotate(-30,100,100)" />
+        <ellipse cx="178" cy="175" rx="10" ry="5" fill="rgba(0,212,255,0.06)" transform="rotate(20,178,175)" />
+        <!-- Glow underneath -->
+        <ellipse cx="140" cy="265" rx="100" ry="12" fill="rgba(123,47,255,0.18)" filter="url(#glow2)" />
+      </svg>
+    </div>
+    <div class="page-hero-content">
+      <p class="page-kicker">// Venues Performed</p>
+      <h1 class="page-title"> Our <span class="grad-blue">Clients</span></h1>
+      <p class="page-desc">From Goa's most iconic beachside stages to underground nightclubs — IMPRINT has graced them
+        all. Here's where the journey has taken us.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VENUES -->
+  <section class="section">
+    <!-- Filter buttons -->
+    <div class="filter-row reveal">
+      <button class="filter-btn active" onclick="filterVenues('all',this)">All Venues</button>
+      <button class="filter-btn" onclick="filterVenues('beach',this)">Beach Clubs</button>
+      <button class="filter-btn" onclick="filterVenues('club',this)">Nightclubs</button>
+      <button class="filter-btn" onclick="filterVenues('festival',this)">Festivals</button>
+    </div>
+
+    <div class="venues-grid" id="venuesGrid">
+
+      <div class="venue-card reveal" data-type="beach">
+        <div class="venue-card-img">
+          <img src="../assets/ven1.jpeg" alt="Aura Beach Cafe" />
+          <div class="venue-card-glow"></div>
+        </div>
+        <div class="venue-card-body">
+          <span class="venue-emoji">🏖️</span>
+          <div class="venue-name">Aura Beach Cafe</div>
+          <div class="venue-location">Anjuna · Goa</div>
+          <span class="venue-type">Beach Club</span>
+        </div>
+      </div>
+
+      <div class="venue-card reveal" data-type="beach" style="transition-delay:0.05s">
+        <div class="venue-card-img">
+          <img src="../assets/ven2.jpeg" alt="Baja Beach Club" />
+          <div class="venue-card-glow"></div>
+        </div>
+        <div class="venue-card-body">
+          <span class="venue-emoji">🌅</span>
+          <div class="venue-name">Baja Beach Club</div>
+          <div class="venue-location">Benaulim · Goa</div>
+          <span class="venue-type">Beach Club</span>
+        </div>
+      </div>
+
+      <div class="venue-card reveal" data-type="beach" style="transition-delay:0.1s">
+        <div class="venue-card-img">
+          <img src="../assets/ven3.jpeg" alt="Mayan Beach Club" />
+          <div class="venue-card-glow"></div>
+        </div>
+        <div class="venue-card-body">
+          <span class="venue-emoji">🎪</span>
+          <div class="venue-name">Mayan Beach Club</div>
+          <div class="venue-location">Goa</div>
+          <span class="venue-type">Beach Club</span>
+        </div>
+      </div>
+
+      <div class="venue-card reveal" data-type="club" style="transition-delay:0.05s">
+        <div class="venue-card-img">
+          <img src="../assets/ven4.jpeg" alt="Tikibab" />
+          <div class="venue-card-glow"></div>
+        </div>
+        <div class="venue-card-body">
+          <span class="venue-emoji">🌴</span>
+          <div class="venue-name">Tikibab</div>
+          <div class="venue-location">Benaulim · Goa</div>
+          <span class="venue-type">Nightclub</span>
+        </div>
+      </div>
+
+      <div class="venue-card reveal" data-type="festival" style="transition-delay:0.1s">
+        <div class="venue-card-img">
+          <img src="../assets/ven5.jpeg" alt="Hilltop" />
+          <div class="venue-card-glow"></div>
+        </div>
+        <div class="venue-card-body">
+          <span class="venue-emoji">⛰️</span>
+          <div class="venue-name">Hilltop</div>
+          <div class="venue-location">Vagator · Goa</div>
+          <span class="venue-type">Festival</span>
+        </div>
+      </div>
+
+      <div class="venue-card reveal" data-type="club" style="transition-delay:0.15s">
+        <div class="venue-card-img">
+          <img src="../assets/ven6.jpeg" alt="Sopon" />
+          <div class="venue-card-glow"></div>
+        </div>
+        <div class="venue-card-body">
+          <span class="venue-emoji">🎵</span>
+          <div class="venue-name">Sopon</div>
+          <div class="venue-location">Canacona · Goa</div>
+          <span class="venue-type">Nightclub</span>
+        </div>
+      </div>
+
+      <div class="venue-card reveal" data-type="club">
+        <div class="venue-card-img">
+          <img src="../assets/ven7.jpeg" alt="Dynamo Vagator" />
+          <div class="venue-card-glow"></div>
+        </div>
+        <div class="venue-card-body">
+          <span class="venue-emoji">⚡</span>
+          <div class="venue-name">Dynamo</div>
+          <div class="venue-location">Vagator · Goa</div>
+          <span class="venue-type">Nightclub</span>
+        </div>
+      </div>
+
+      <div class="venue-card reveal" data-type="club" style="transition-delay:0.05s">
+        <div class="venue-card-img">
+          <img src="../assets/ven8.jpeg" alt="Avtar Bar Kitchen" />
+          <div class="venue-card-glow"></div>
+        </div>
+        <div class="venue-card-body">
+          <span class="venue-emoji">🍸</span>
+          <div class="venue-name">Avtar Bar &amp; Kitchen</div>
+          <div class="venue-location">Chapora · Goa</div>
+          <span class="venue-type">Nightclub</span>
+        </div>
+      </div>
+
+      <div class="venue-card reveal" data-type="beach" style="transition-delay:0.1s">
+        <div class="venue-card-img">
+          <img src="../assets/hero6.jpeg" alt="Strobe Events" />
+          <div class="venue-card-glow"></div>
+        </div>
+        <div class="venue-card-body">
+          <span class="venue-emoji">🌊</span>
+          <div class="venue-name">Private &amp; Corporate</div>
+          <div class="venue-location">Pan-Goa · India</div>
+          <span class="venue-type">Private Events</span>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MAP SECTION -->
+  <section class="map-section">
+    <div class="section-head">
+      <p class="page-kicker reveal">// Goa Coverage</p>
+      <h2 class="reveal"
+        style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);letter-spacing:0.05em;">Playing <span
+          class="grad">Across Goa</span></h2>
+    </div>
+    <div class="map-container reveal">
+      <div style="position:relative;width:100%;height:380px;border-radius:16px;overflow:hidden;">
+        <!-- Real Google Map of Goa -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d245698.36866655!2d73.9862!3d15.2993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin&style=feature:all|element:geometry|color:0x0d0d1a&style=feature:water|element:geometry|color:0x0a0a2a&style=feature:road|element:geometry|color:0x1a0a3a"
+          width="100%" height="100%"
+          style="border:0;filter:invert(90%) hue-rotate(180deg) saturate(1.5) brightness(0.85);" allowfullscreen=""
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <!-- Overlay pins on top of map -->
+        <div style="position:absolute;inset:0;pointer-events:none;">
+          <div style="position:absolute;top:22%;left:35%;display:flex;flex-direction:column;align-items:center;">
+            <div
+              style="width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue);position:relative;">
+              <div
+                style="position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(0,212,255,0.4);animation:pin-pulse 2s ease-in-out infinite;">
+              </div>
+            </div>
+            <div
+              style="font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.1em;color:var(--white);background:rgba(3,3,6,0.85);padding:2px 7px;border-radius:4px;margin-top:5px;white-space:nowrap;border:1px solid var(--border);">
+              Vagator · Hilltop</div>
+          </div>
+          <div style="position:absolute;top:30%;left:28%;display:flex;flex-direction:column;align-items:center;">
+            <div
+              style="width:12px;height:12px;border-radius:50%;background:var(--pink);box-shadow:0 0 12px var(--pink);position:relative;">
+              <div
+                style="position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(255,45,120,0.4);animation:pin-pulse 2s ease-in-out infinite;animation-delay:0.3s;">
+              </div>
+            </div>
+            <div
+              style="font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.1em;color:var(--white);background:rgba(3,3,6,0.85);padding:2px 7px;border-radius:4px;margin-top:5px;white-space:nowrap;border:1px solid var(--border);">
+              Anjuna · Aura Beach</div>
+          </div>
+          <div style="position:absolute;top:42%;left:48%;display:flex;flex-direction:column;align-items:center;">
+            <div
+              style="width:12px;height:12px;border-radius:50%;background:var(--purple);box-shadow:0 0 12px var(--purple);position:relative;">
+              <div
+                style="position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(123,47,255,0.4);animation:pin-pulse 2s ease-in-out infinite;animation-delay:0.5s;">
+              </div>
+            </div>
+            <div
+              style="font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.1em;color:var(--white);background:rgba(3,3,6,0.85);padding:2px 7px;border-radius:4px;margin-top:5px;white-space:nowrap;border:1px solid var(--border);">
+              Panjim · HQ</div>
+          </div>
+          <div style="position:absolute;top:50%;left:44%;display:flex;flex-direction:column;align-items:center;">
+            <div
+              style="width:12px;height:12px;border-radius:50%;background:var(--pink);box-shadow:0 0 12px var(--pink);position:relative;">
+              <div
+                style="position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(255,45,120,0.4);animation:pin-pulse 2s ease-in-out infinite;animation-delay:0.2s;">
+              </div>
+            </div>
+            <div
+              style="font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.1em;color:var(--white);background:rgba(3,3,6,0.85);padding:2px 7px;border-radius:4px;margin-top:5px;white-space:nowrap;border:1px solid var(--border);">
+              Goa · Mayan Beach Club</div>
+          </div>
+          <div style="position:absolute;top:38%;left:40%;display:flex;flex-direction:column;align-items:center;">
+            <div
+              style="width:12px;height:12px;border-radius:50%;background:var(--pink);box-shadow:0 0 12px var(--pink);position:relative;">
+              <div
+                style="position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(255,45,120,0.4);animation:pin-pulse 2s ease-in-out infinite;animation-delay:0.4s;">
+              </div>
+            </div>
+            <div
+              style="font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.1em;color:var(--white);background:rgba(3,3,6,0.85);padding:2px 7px;border-radius:4px;margin-top:5px;white-space:nowrap;border:1px solid var(--border);">
+              Chapora · Avtar Bar</div>
+          </div>
+          <div style="position:absolute;top:62%;left:52%;display:flex;flex-direction:column;align-items:center;">
+            <div
+              style="width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 12px var(--blue);position:relative;">
+              <div
+                style="position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(0,212,255,0.4);animation:pin-pulse 2s ease-in-out infinite;animation-delay:0.6s;">
+              </div>
+            </div>
+            <div
+              style="font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.1em;color:var(--white);background:rgba(3,3,6,0.85);padding:2px 7px;border-radius:4px;margin-top:5px;white-space:nowrap;border:1px solid var(--border);">
+              Benaulim · Baja / Tikibab</div>
+          </div>
+          <div style="position:absolute;top:76%;left:56%;display:flex;flex-direction:column;align-items:center;">
+            <div
+              style="width:12px;height:12px;border-radius:50%;background:var(--pink);box-shadow:0 0 12px var(--pink);position:relative;">
+              <div
+                style="position:absolute;inset:-4px;border-radius:50%;border:2px solid rgba(255,45,120,0.4);animation:pin-pulse 2s ease-in-out infinite;animation-delay:0.8s;">
+              </div>
+            </div>
+            <div
+              style="font-family:var(--font-mono);font-size:0.5rem;letter-spacing:0.1em;color:var(--white);background:rgba(3,3,6,0.85);padding:2px 7px;border-radius:4px;margin-top:5px;white-space:nowrap;border:1px solid var(--border);">
+              Canacona · Sopon</div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:center;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--pink);box-shadow:0 0 8px var(--pink);">
+          </div><span
+            style="font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;">Regular
+            Venues</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:10px;height:10px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue);">
+          </div><span
+            style="font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;">Featured
+            Spots</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div
+            style="width:10px;height:10px;border-radius:50%;background:var(--purple);box-shadow:0 0 8px var(--purple);">
+          </div><span style="font-family:var(--font-mono);font-size:0.7rem;color:var(--muted);letter-spacing:0.1em;">Key
+            Locations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BOOKING CTA -->
+  <section class="section" style="text-align:center;padding-bottom:clamp(60px,10vw,100px);">
+    <p class="page-kicker reveal">// Book a Venue Night</p>
+    <h2 class="reveal"
+      style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);letter-spacing:0.05em;margin-bottom:24px;">
+      Want IMPRINT at <span class="grad">Your Venue?</span></h2>
+    <p class="reveal" style="color:var(--muted);max-width:480px;margin:0 auto 40px;line-height:1.8;">Contact us now to
+      book a residency, one-night set, or a full event production with Strobe Nightlife.</p>
+    <div class="reveal" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="booking.html" class="btn btn-primary">Book NOW</a>
+      <a href="https://wa.me/919923580022" target="_blank" class="btn btn-ghost">WhatsApp ↗</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+ <footer>
+    <div class="footer-brand">Imprintverse</div>
+    <div class="footer-links">
+      <a href="https://music.apple.com/us/new" target="_blank" aria-label="Apple Music"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3v12.5a3.5 3.5 0 1 1-2-3.16V7.5l-6 1.5v8.5a3.5 3.5 0 1 1-2-3.16V6l10-3z"/></svg></a>
+      <a href="https://www.instagram.com/imprintverse/" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/imprintverse" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://soundcloud.com/imprintverse" target="_blank" aria-label="SoundCloud"><svg width="18" height="12" viewBox="0 0 40 20" fill="currentColor"><path d="M0 14.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-6C3 7.67 2.33 7 1.5 7S0 7.67 0 8.5v6zm4-2c0 .83.67 1.5 1.5 1.5S7 13.33 7 12.5v-9C7 2.67 6.33 2 5.5 2S4 2.67 4 3.5v9zm4 1.5c0 .83.67 1.5 1.5 1.5S11 14.83 11 14v-8c0-.83-.67-1.5-1.5-1.5S8 5.17 8 6v8zm4 .5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5.5C15 4.67 14.33 4 13.5 4S12 4.67 12 5.5v9zm5.5 1.5c4.14 0 7.5-3.36 7.5-7.5S21.64 1 17.5 1c-3.4 0-6.27 2.27-7.19 5.37C10.87 6.14 11.5 6.77 11.5 7.5v7c0 .6-.35 1.11-.86 1.35.89.42 1.86.65 2.86.65z"/></svg></a>
+      <a href="https://www.mixcloud.com/imprintverse/" target="_blank" aria-label="Mixcloud"><svg width="16" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.06 5.12A8 8 0 0 1 24 13a7.85 7.85 0 0 1-1.86 5.06A3 3 0 0 1 21 24H7a5 5 0 0 1-5-5A4.62 4.62 0 0 1 3.26 15 7 7 0 0 1 3 13 7 7 0 0 1 10 6a6.82 6.82 0 0 1 2.86.62 8.08 8.08 0 0 1 4.2-1.5z"/></svg></a>
+      <a href="https://www.twitch.tv/imprintverse" target="_blank" aria-label="Twitch"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+      <a href="https://x.com/imprintverse" target="_blank" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://youtube.com/@imprintverse" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://open.spotify.com/" target="_blank" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.301 1.02zm1.44-3.3c-.301.42-.84.539-1.262.239-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.221c-.6.18-1.2-.18-1.38-.781-.18-.6.18-1.2.78-1.38 4.2-1.26 11.28-1.02 15.781 1.62.54.3.72.96.42 1.5-.299.54-.959.72-1.681.42z"/></svg></a>
+    </div>
+    <div class="footer-copy">Imprintverse © 2026 <br> Artist Managed by Strobe Nightlife <br> Website Crafted by Cyber Creative</div>
+  </footer>
+  <a href="#" id="backToTop">↑</a>
+   <script src="../js/main.js"></script>
+
+ 
+</body>
+
+</html>

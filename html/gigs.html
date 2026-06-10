@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPRINT — Gigs & Events</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <canvas id="bgCanvas"></canvas>
+  <div class="grid-3d"></div>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="brand">IMPRINT<span class="brand-dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="music.html">Music</a>
+      <a href="gigs.html" class="active">Gigs</a>
+      <a href="venues.html">Venues</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="booking.html" class="nav-cta">Bookings</a>
+    </nav>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </header>
+    
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <!-- 3D DJ Turntable Decoration -->
+    <div class="page-dj-deco">
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="tg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7b2fff" />
+            <stop offset="100%" stop-color="#00d4ff" />
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <!-- Turntable base -->
+        <rect x="20" y="160" width="260" height="120" rx="12" fill="rgba(10,10,30,0.95)" stroke="url(#tg)"
+          stroke-width="1.5" />
+        <!-- Main platter -->
+        <circle cx="110" cy="200" r="70" fill="rgba(15,5,40,0.9)" stroke="url(#tg)" stroke-width="1.5" />
+        <circle cx="110" cy="200" r="55" fill="rgba(10,3,30,1)" stroke="rgba(0,212,255,0.2)" stroke-width="1" />
+        <circle cx="110" cy="200" r="35" fill="rgba(8,2,25,1)" stroke="rgba(123,47,255,0.4)" stroke-width="1" />
+        <circle cx="110" cy="200" r="8" fill="#00d4ff" filter="url(#glow)" />
+        <circle cx="110" cy="200" r="65" fill="none" stroke="rgba(123,47,255,0.1)" stroke-width="0.5"
+          stroke-dasharray="4 3" />
+        <circle cx="110" cy="200" r="45" fill="none" stroke="rgba(0,212,255,0.08)" stroke-width="0.5"
+          stroke-dasharray="4 3" />
+        <!-- Tonearm -->
+        <line x1="170" y1="168" x2="140" y2="198" stroke="url(#tg)" stroke-width="3" stroke-linecap="round" />
+        <circle cx="170" cy="162" r="8" fill="rgba(25,10,60,1)" stroke="url(#tg)" stroke-width="1.5" />
+        <circle cx="137" cy="201" r="5" fill="#ff2d78" filter="url(#glow)" />
+        <!-- Mixer right side -->
+        <rect x="200" y="170" width="60" height="80" rx="6" fill="rgba(15,5,40,0.9)" stroke="rgba(123,47,255,0.4)"
+          stroke-width="1" />
+        <circle cx="215" cy="185" r="6" fill="rgba(255,45,120,0.8)" filter="url(#glow)" />
+        <circle cx="230" cy="185" r="6" fill="rgba(123,47,255,0.8)" filter="url(#glow)" />
+        <circle cx="245" cy="185" r="6" fill="rgba(0,212,255,0.8)" filter="url(#glow)" />
+        <rect x="225" y="198" width="10" height="35" rx="3" fill="rgba(0,212,255,0.15)" stroke="rgba(0,212,255,0.4)"
+          stroke-width="1" />
+        <rect x="223" y="212" width="14" height="7" rx="2" fill="rgba(0,212,255,0.7)" />
+        <!-- Floating notes -->
+        <text x="240" y="140" font-size="18" fill="rgba(0,212,255,0.5)" font-family="serif">♪</text>
+        <text x="30" y="150" font-size="14" fill="rgba(255,45,120,0.4)" font-family="serif">♫</text>
+        <text x="260" y="170" font-size="12" fill="rgba(123,47,255,0.5)" font-family="serif">♩</text>
+        <!-- Glow under -->
+        <ellipse cx="150" cy="285" rx="120" ry="12" fill="rgba(123,47,255,0.12)" filter="url(#glow)" />
+      </svg>
+    </div>
+    <div class="page-hero-content">
+      <p class="page-kicker">// 03 — Tour</p>
+      <h1 class="page-title">Our <span class="grad">Gigs</span></h1>
+      <p class="page-desc">From intimate beach sessions to high-energy nightclub residencies — every night is a sonic
+        journey crafted just for you.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- GIGS SECTION -->
+  <section class="section">
+    <div class="tab-row">
+      <button id="tabUpcoming" class="tab-btn" onclick="switchTab('upcoming')">Upcoming Gigs</button>
+      <button id="tabPast" class="tab-btn active" onclick="switchTab('past')">Past Gigs</button>
+    </div>
+
+    <!-- UPCOMING -->
+    <div id="upcomingTab" style="display:none;">
+      <div class="countdown-wrap reveal">
+        <p class="countdown-label">Next Event Countdown</p>
+        <div class="countdown-boxes">
+          <div class="cd-box">
+            <div class="cd-num" id="cdDays">00</div>
+            <div class="cd-unit">DAYS</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdHours">00</div>
+            <div class="cd-unit">HOURS</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdMins">00</div>
+            <div class="cd-unit">MINS</div>
+          </div>
+          <div class="cd-sep">:</div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdSecs">00</div>
+            <div class="cd-unit">SECS</div>
+          </div>
+        </div>
+      </div>
+      <p
+        style="text-align:center;font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);letter-spacing:0.15em;">
+        Stay tuned for upcoming announcements</p>
+    </div>
+
+    <!-- PAST GIGS -->
+    <div id="pastTab">
+      <!-- Gig 1 -->
+      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--purple)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <img src="../assets/gig1.jpeg" alt="Aura Beach Cafe" />
+        <div class="past-gig-content">
+          <div>
+            <div class="past-gig-date-pill">Sat 2 Nov 2024</div>
+            <h3 class="past-gig-title">Aura Beach Cafe · Anjuna</h3>
+            <div class="past-gig-meta"><span>📅 2 Nov 2024</span><span>🕓 5PM Onwards</span><span>📍 Aura, Anjuna,
+                Goa</span><span>🎵 Organic House</span></div>
+            <p class="past-gig-desc">A mesmerising sunset session at Aura Beach Cafe, Anjuna — blending organic house
+              with Goa's natural coastline energy.</p>
+          </div>
+          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
+        </div>
+      </div>
+      <!-- Gig 2 -->
+      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--blue)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <img src="../assets/gig2.jpeg" alt="Sunday Sunset Stories Baja" />
+        <div class="past-gig-content">
+          <div>
+            <div class="past-gig-date-pill">Sun 3 Nov 2024</div>
+            <h3 class="past-gig-title">Sunday Sunset Stories · Baja Beach Club</h3>
+            <div class="past-gig-meta"><span>📅 3 Nov 2024</span><span>🕓 4:30PM Onwards</span><span>📍 Baja, Trinity
+                Beach Road, Benaulim, Goa</span><span>🎵 Organic House</span></div>
+            <p class="past-gig-desc">Sunday Sunset Stories at Baja — a deep, hypnotic journey to close out the weekend
+              on the Benaulim beachfront.</p>
+          </div>
+          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
+        </div>
+      </div>
+      <!-- Gig 3 -->
+      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--pink)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <img src="../assets/gig3.jpeg" alt="Hilltop Vagator" />
+        <div class="past-gig-content">
+          <div> 
+            <div class="past-gig-date-pill">Sat 9 Nov 2024</div>
+            <h3 class="past-gig-title">Hilltop Festival · Vagator</h3>
+            <div class="past-gig-meta"><span>📅 9 Nov 2024</span><span>🕓 8PM Onwards</span><span>📍 Hilltop, Vagator,
+                Goa</span><span>🎵 Techno / Electronic</span></div>
+            <p class="past-gig-desc">Taking the stage at the legendary Hilltop, Vagator — one of Goa's most iconic
+              electronic music arenas.</p>
+          </div>
+          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
+        </div>
+      </div>
+      <!-- Gig 4 -->
+      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--gold)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <img src="../assets/gig4.jpeg" alt="Mayan Beach Club" />
+        <div class="past-gig-content">
+          <div>
+            <div class="past-gig-date-pill">Sun 24 Nov 2024</div>
+            <h3 class="past-gig-title">Mayan Beach Club · Goa</h3>
+            <div class="past-gig-meta"><span>📅 24 Nov 2024</span><span>🕓 3PM Onwards</span><span>📍 Mayan Beach Club,
+                Goa</span><span>🎵 Afro House</span></div>
+            <p class="past-gig-desc">A tribal, sun-soaked afternoon at Mayan Beach Club — afro grooves meeting Goa's
+              golden coastline.</p>
+          </div>
+          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
+        </div>
+      </div>
+      <!-- Gig 5 -->
+      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--purple)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <img src="../assets/gig5.jpeg" alt="Tikibab Benaulim" />
+        <div class="past-gig-content">
+          <div>
+            <div class="past-gig-date-pill">Sun 30 Nov 2025</div>
+            <h3 class="past-gig-title">Tikibab · Benaulim</h3>
+            <div class="past-gig-meta"><span>📅 30 Nov 2025</span><span>🕓 6PM Onwards</span><span>📍 Tikibab, Benaulim,
+                Goa</span><span>🎵 Deep / Organic House</span></div>
+            <p class="past-gig-desc">A live recording session at Tikibab, Benaulim — captured on Mixcloud, a hypnotic
+              hour of deep house and rolling grooves.</p>
+          </div>
+          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
+        </div>
+      </div>
+      <!-- Gig 6 -->
+      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--blue)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <img src="../assets/gig6.jpeg" alt="Sopon Canacona" />
+        <div class="past-gig-content">
+          <div>
+            <div class="past-gig-date-pill">Fri 20 Dec 2024</div>
+            <h3 class="past-gig-title">Sopon · Canacona</h3>
+            <div class="past-gig-meta"><span>📅 20 Dec 2024</span><span>🕓 9PM Onwards</span><span>📍 Sopon, Canacona,
+                Goa</span><span>🎵 House / Electronic</span></div>
+            <p class="past-gig-desc">Heading deep south to Canacona for a high-energy club night at Sopon — pure house
+              music in an electric atmosphere.</p>
+          </div>
+          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
+        </div>
+      </div>
+      <!-- Gig 7 -->
+      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--purple)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <img src="../assets/gig7.jpeg" alt="Sunday Sunset Stories Dec" />
+        <div class="past-gig-content">
+          <div>
+            <div class="past-gig-date-pill">Sun 29 Dec 2024</div>
+            <h3 class="past-gig-title">Sunday Sunset Stories · Imprint &amp; Rohit</h3>
+            <div class="past-gig-meta"><span>📅 29 Dec 2024</span><span>🕓 4:30PM Onwards</span><span>📍 Baja, Trinity
+                Beach Road, Benaulim, Goa</span><span>🎵 Organic House</span></div>
+            <p class="past-gig-desc">Sunday Sunset Stories at Baja featuring Imprint and Rohit — a double act bringing
+              deep, hypnotic sounds to the Benaulim beach.</p>
+          </div>
+          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
+        </div>
+      </div>
+      <!-- Gig 8 -->
+      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--gold)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <img src="../assets/gig8.jpeg" alt="Moments NYE Dynamo" />
+        <div class="past-gig-content">
+          <div>
+            <div class="past-gig-date-pill">28–31 Dec 2024</div>
+            <h3 class="past-gig-title">Moments — New Year Party 2025 · Dynamo</h3>
+            <div class="past-gig-meta"><span>📅 28–31 Dec 2024</span><span>🕓 5:00PM Onwards</span><span>📍 Dynamo,
+                Vagator, Goa</span><span>🎵 Electronic</span></div>
+            <p class="past-gig-desc">Mehandi Hasan with DJ Imprint — New Year celebrations at Dynamo Vagator across 4
+              nights, ringing in 2025 with style.</p>
+          </div>
+          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
+        </div>
+      </div>
+      <!-- Gig 9 -->
+      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--purple)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <img src="../assets/gig9.jpeg" alt="Avtar Bar Chapora" />
+        <div class="past-gig-content">
+          <div>
+            <div class="past-gig-date-pill">Sun 12 Jan 2025</div>
+            <h3 class="past-gig-title">Avtar Bar &amp; Kitchen · Chapora</h3>
+            <div class="past-gig-meta"><span>📅 12 Jan 2025</span><span>🕓 10PM Onwards</span><span>📍 Chapora Street,
+                20m from Chapora Chapel, Goa</span><span>🎵 DJ + Sitar Fusion</span></div>
+            <p class="past-gig-desc">Mehandi Hasan on Indian Classical Sitar with DJ Imprint — a mesmerising fusion
+              night at Avtar Bar &amp; Kitchen, Chapora.</p>
+          </div>
+          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+        <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20enquire%20about%20upcoming%20gigs."
+          target="_blank" class="btn btn-wa">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.859L.057 23.428a.5.5 0 0 0 .609.61l5.57-1.474A11.951 11.951 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.362-.216-3.743.99.998-3.742-.234-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+          </svg>
+          &nbsp;Enquire via WhatsApp
+        </a>
+        <p style="font-family:var(--font-mono);font-size:0.72rem;color:var(--muted);letter-spacing:0.1em;">Fastest
+          response via WhatsApp · Also available for Twitch live stream bookings</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+ <footer>
+    <div class="footer-brand">Imprintverse</div>
+    <div class="footer-links">
+      <a href="https://music.apple.com/us/new" target="_blank" aria-label="Apple Music"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3v12.5a3.5 3.5 0 1 1-2-3.16V7.5l-6 1.5v8.5a3.5 3.5 0 1 1-2-3.16V6l10-3z"/></svg></a>
+      <a href="https://www.instagram.com/imprintverse/" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/imprintverse" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://soundcloud.com/imprintverse" target="_blank" aria-label="SoundCloud"><svg width="18" height="12" viewBox="0 0 40 20" fill="currentColor"><path d="M0 14.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-6C3 7.67 2.33 7 1.5 7S0 7.67 0 8.5v6zm4-2c0 .83.67 1.5 1.5 1.5S7 13.33 7 12.5v-9C7 2.67 6.33 2 5.5 2S4 2.67 4 3.5v9zm4 1.5c0 .83.67 1.5 1.5 1.5S11 14.83 11 14v-8c0-.83-.67-1.5-1.5-1.5S8 5.17 8 6v8zm4 .5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5.5C15 4.67 14.33 4 13.5 4S12 4.67 12 5.5v9zm5.5 1.5c4.14 0 7.5-3.36 7.5-7.5S21.64 1 17.5 1c-3.4 0-6.27 2.27-7.19 5.37C10.87 6.14 11.5 6.77 11.5 7.5v7c0 .6-.35 1.11-.86 1.35.89.42 1.86.65 2.86.65z"/></svg></a>
+      <a href="https://www.mixcloud.com/imprintverse/" target="_blank" aria-label="Mixcloud"><svg width="16" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.06 5.12A8 8 0 0 1 24 13a7.85 7.85 0 0 1-1.86 5.06A3 3 0 0 1 21 24H7a5 5 0 0 1-5-5A4.62 4.62 0 0 1 3.26 15 7 7 0 0 1 3 13 7 7 0 0 1 10 6a6.82 6.82 0 0 1 2.86.62 8.08 8.08 0 0 1 4.2-1.5z"/></svg></a>
+      <a href="https://www.twitch.tv/imprintverse" target="_blank" aria-label="Twitch"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+      <a href="https://x.com/imprintverse" target="_blank" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://youtube.com/@imprintverse" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://open.spotify.com/" target="_blank" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.301 1.02zm1.44-3.3c-.301.42-.84.539-1.262.239-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.221c-.6.18-1.2-.18-1.38-.781-.18-.6.18-1.2.78-1.38 4.2-1.26 11.28-1.02 15.781 1.62.54.3.72.96.42 1.5-.299.54-.959.72-1.681.42z"/></svg></a>
+    </div>
+    <div class="footer-copy">Imprintverse © 2026 <br> Artist Managed by Strobe Nightlife <br> Website Crafted by Cyber Creative</div>
+  </footer>
+
+  <a href="#" id="backToTop">↑</a>
+   <script src="../js/main.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPRINT — Bookings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <canvas id="bgCanvas"></canvas>
+  <div class="grid-3d"></div>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="brand">IMPRINT<span class="brand-dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="music.html">Music</a>
+      <a href="gigs.html">Gigs</a>
+      <a href="venues.html">Venues</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="booking.html" class="nav-cta active">Bookings</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="page-hero" id="top">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+
+    <!-- 3D DJ Booth Decoration -->
+    <div class="hero-deco">
+      <svg viewBox="0 0 380 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="hbg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7b2fff" stop-opacity="0.95" />
+            <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.8" />
+          </linearGradient>
+          <linearGradient id="hbg2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#7b2fff" />
+            <stop offset="50%" stop-color="#c026d3" />
+            <stop offset="100%" stop-color="#00d4ff" />
+          </linearGradient>
+          <filter id="hglow">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <!-- Booth base -->
+        <rect x="40" y="330" width="300" height="130" rx="14" fill="rgba(10,10,30,0.97)" stroke="url(#hbg)"
+          stroke-width="1.5" />
+        <!-- Booth inner panel -->
+        <rect x="58" y="348" width="264" height="92" rx="8" fill="rgba(7,4,20,0.9)" stroke="rgba(123,47,255,0.3)"
+          stroke-width="1" />
+        <!-- Turntable Left -->
+        <circle cx="120" cy="394" r="42" fill="rgba(18,5,45,0.97)" stroke="url(#hbg)" stroke-width="1.5" />
+        <circle cx="120" cy="394" r="32" fill="rgba(12,3,32,1)" stroke="rgba(0,212,255,0.2)" stroke-width="1" />
+        <circle cx="120" cy="394" r="20" fill="rgba(8,2,20,1)" stroke="rgba(123,47,255,0.4)" stroke-width="1" />
+        <circle cx="120" cy="394" r="6" fill="#00d4ff" filter="url(#hglow)" />
+        <circle cx="120" cy="394" r="38" fill="none" stroke="rgba(123,47,255,0.1)" stroke-width="0.6"
+          stroke-dasharray="4 2" />
+        <circle cx="120" cy="394" r="26" fill="none" stroke="rgba(0,212,255,0.08)" stroke-width="0.6"
+          stroke-dasharray="4 2" />
+        <!-- Turntable Right -->
+        <circle cx="260" cy="394" r="42" fill="rgba(18,5,45,0.97)" stroke="url(#hbg)" stroke-width="1.5" />
+        <circle cx="260" cy="394" r="32" fill="rgba(12,3,32,1)" stroke="rgba(0,212,255,0.2)" stroke-width="1" />
+        <circle cx="260" cy="394" r="20" fill="rgba(8,2,20,1)" stroke="rgba(123,47,255,0.4)" stroke-width="1" />
+        <circle cx="260" cy="394" r="6" fill="#ff2d78" filter="url(#hglow)" />
+        <circle cx="260" cy="394" r="38" fill="none" stroke="rgba(255,45,120,0.1)" stroke-width="0.6"
+          stroke-dasharray="4 2" />
+        <!-- Mixer -->
+        <rect x="168" y="352" width="44" height="72" rx="7" fill="rgba(22,6,55,0.97)" stroke="rgba(123,47,255,0.5)"
+          stroke-width="1" />
+        <circle cx="180" cy="368" r="5" fill="rgba(255,45,120,0.85)" filter="url(#hglow)" />
+        <circle cx="190" cy="368" r="5" fill="rgba(123,47,255,0.85)" filter="url(#hglow)" />
+        <circle cx="200" cy="368" r="5" fill="rgba(0,212,255,0.85)" filter="url(#hglow)" />
+        <rect x="185" y="380" width="10" height="30" rx="3" fill="rgba(0,212,255,0.1)" stroke="rgba(0,212,255,0.4)"
+          stroke-width="1" />
+        <rect x="183" y="390" width="14" height="7" rx="2" fill="rgba(0,212,255,0.7)" />
+        <!-- Screen -->
+        <rect x="68" y="354" width="72" height="32" rx="5" fill="rgba(0,0,0,0.85)" stroke="rgba(0,212,255,0.4)"
+          stroke-width="1" />
+        <polyline
+          points="72,370 78,364 84,372 90,362 96,369 102,364 108,370 114,365 118,369 122,363 126,368 130,364 134,370"
+          stroke="rgba(255,255,255,0.75)" stroke-width="1" fill="none" />
+        <!-- Body -->
+        <ellipse cx="190" cy="255" rx="50" ry="65" fill="rgba(14,5,38,0.88)" stroke="url(#hbg2)" stroke-width="1.5" />
+        <path d="M156 236 Q190 220 224 236" stroke="rgba(123,47,255,0.5)" stroke-width="1" fill="none" />
+        <rect x="180" y="242" width="20" height="32" rx="4" fill="rgba(123,47,255,0.18)" stroke="rgba(123,47,255,0.4)"
+          stroke-width="0.5" />
+        <!-- Arms -->
+        <path d="M142 248 Q105 278 84 322" stroke="url(#hbg2)" stroke-width="13" stroke-linecap="round" fill="none" />
+        <path d="M238 248 Q275 278 296 322" stroke="url(#hbg2)" stroke-width="13" stroke-linecap="round" fill="none" />
+        <ellipse cx="84" cy="327" rx="15" ry="11" fill="rgba(123,47,255,0.6)" stroke="url(#hbg)" stroke-width="1" />
+        <ellipse cx="296" cy="327" rx="15" ry="11" fill="rgba(123,47,255,0.6)" stroke="url(#hbg)" stroke-width="1" />
+        <!-- Head -->
+        <ellipse cx="190" cy="165" rx="46" ry="52" fill="rgba(14,5,38,0.93)" stroke="url(#hbg2)" stroke-width="1.5" />
+        <ellipse cx="174" cy="160" rx="7" ry="8" fill="rgba(0,212,255,0.75)" filter="url(#hglow)" />
+        <ellipse cx="206" cy="160" rx="7" ry="8" fill="rgba(0,212,255,0.75)" filter="url(#hglow)" />
+        <!-- Headphones -->
+        <path d="M146 154 Q148 118 190 113 Q232 118 234 154" stroke="url(#hbg2)" stroke-width="5" fill="none"
+          stroke-linecap="round" />
+        <rect x="137" y="147" width="15" height="24" rx="7" fill="rgba(123,47,255,0.95)" stroke="var(--blue)"
+          stroke-width="1" />
+        <rect x="228" y="147" width="15" height="24" rx="7" fill="rgba(123,47,255,0.95)" stroke="var(--blue)"
+          stroke-width="1" />
+        <!-- Neck -->
+        <rect x="175" y="213" width="30" height="26" rx="7" fill="rgba(14,5,38,0.88)" stroke="url(#hbg2)"
+          stroke-width="1" />
+        <!-- Legs -->
+        <rect x="160" y="313" width="24" height="50" rx="11" fill="rgba(14,5,38,0.9)" stroke="url(#hbg2)"
+          stroke-width="1" />
+        <rect x="196" y="313" width="24" height="50" rx="11" fill="rgba(14,5,38,0.9)" stroke="url(#hbg2)"
+          stroke-width="1" />
+        <ellipse cx="172" cy="366" rx="20" ry="9" fill="rgba(10,3,24,0.97)" stroke="rgba(123,47,255,0.5)"
+          stroke-width="1" />
+        <ellipse cx="208" cy="366" rx="20" ry="9" fill="rgba(10,3,24,0.97)" stroke="rgba(123,47,255,0.5)"
+          stroke-width="1" />
+        <!-- Floating notes -->
+        <text x="310" y="180" font-size="22" fill="rgba(0,212,255,0.45)" font-family="serif">♪</text>
+        <text x="36" y="200" font-size="17" fill="rgba(255,45,120,0.38)" font-family="serif">♫</text>
+        <text x="325" y="260" font-size="15" fill="rgba(123,47,255,0.48)" font-family="serif">♩</text>
+        <!-- Glow under -->
+        <ellipse cx="190" cy="468" rx="150" ry="18" fill="rgba(123,47,255,0.14)" filter="url(#hglow)" />
+      </svg>
+    </div>
+
+    <div class="page-hero-content">
+      <p class="page-kicker">// Let's Create Together</p>
+      <h1 class="page-title">Book <span class="grad">IMPRINT</span></h1>
+      <p class="hero-sub">Available for club nights, beach parties, festivals, weddings, corporate events and private
+        sessions across Goa and India.</p>
+      <div class="hero-pills">
+        <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20book%20you%20for%20an%20event."
+          target="_blank" class="hero-pill wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#25D366">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+            <path
+              d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.859L.057 23.428a.5.5 0 0 0 .609.61l5.57-1.474A11.951 11.951 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.362-.216-3.743.99.998-3.742-.234-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+          </svg>
+          WhatsApp Now
+        </a>
+        <a href="mailto:mail@strobenightlife.com" class="hero-pill">✉️ &nbsp;Booking Agency</a>
+      </div>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════ BOOKING FORM + CONTACTS ═══════════ -->
+  <section class="section" id="form">
+    <div class="booking-grid">
+
+      <!-- LEFT — Info + Contacts -->
+      <div class="reveal-left">
+        <h3 class="info-head">Exclusively Managed By <span class="grad">Strobe Nightlife</span></h3>
+        <p class="info-desc">Available for club nights, beach events, festivals, brand activations, private parties and
+          corporate events
+          across Goa, India and internationally.</p>
+
+        <div class="contact-links">
+          <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20book%20you%20for%20an%20event."
+            target="_blank" class="contact-link wa-link">
+            <span class="cl-icon green">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.859L.057 23.428a.5.5 0 0 0 .609.61l5.57-1.474A11.951 11.951 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.362-.216-3.743.99.998-3.742-.234-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+              </svg>
+            </span>
+            <div>
+              <div class="cl-label">CONNECT VIA WHATSAPP</div>
+              <div class="cl-val">+91 99235 80022</div>
+            </div>
+          </a>
+          <a href="mailto:mail@strobenightlife.com" class="contact-link">
+            <span class="cl-icon purple">✉️</span>
+            <div>
+              <div class="cl-label">Booking Agency</div>
+              <div class="cl-val">mail@strobenightlife.com</div>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/imprintverse/" target="_blank" class="contact-link">
+            <span class="cl-icon blue">📸</span>
+            <div>
+              <div class="cl-label">Instagram DM</div>
+              <div class="cl-val">@imprintverse</div>
+            </div>
+          </a>
+        </div>
+
+
+
+        <!-- Social links -->
+        <div class="socials-row">
+          <a href="https://www.instagram.com/imprintverse/" target="_blank" class="social-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="2" width="20" height="20" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+            Instagram
+          </a>
+          <a href="https://soundcloud.com/imprintverse" target="_blank" class="social-pill">☁️ SoundCloud</a>
+          <a href="https://www.mixcloud.com/imprintverse/" target="_blank" class="social-pill">🎧 Mixcloud</a>
+          <a href="https://x.com/imprintverse" target="_blank" class="social-pill">𝕏 Twitter</a>
+          <a href="https://youtube.com/@imprintverse" target="_blank" class="social-pill">▶️ YouTube</a>
+          <a href="https://www.facebook.com/imprintverse" target="_blank" class="social-pill">Facebook</a>
+        </div>
+      </div>
+
+      <!-- RIGHT — Booking Form -->
+      <div class="reveal-right">
+        <form class="book-form" id="bookForm" novalidate>
+          <div class="form-title">Send a Booking Request</div>
+          <div class="form-sub">We'll get back to you within 24 hours</div>
+
+          <div class="form-row">
+            <div class="field">
+              <input type="text" id="f-name" placeholder=" " required />
+              <label for="f-name">Your Name *</label>
+            </div>
+            <div class="field">
+              <input type="email" id="f-email" placeholder=" " required />
+              <label for="f-email">Email Address *</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <input type="text" id="f-phone" placeholder=" " />
+            <label for="f-phone">Phone / WhatsApp Number</label>
+          </div>
+
+          <div class="field">
+            <input type="text" id="f-event" placeholder=" " />
+            <label for="f-event">Event / Venue Name</label>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <input type="text" id="f-date" placeholder=" " onfocus="(this.type='date')"
+                onblur="if(!this.value)this.type='text'" />
+              <label for="f-date">Event Date</label>
+            </div>
+            <div class="field">
+              <select id="f-type"
+                onchange="this.classList.add('chosen');this.nextElementSibling.style.top='6px';this.nextElementSibling.style.fontSize='.58rem';this.nextElementSibling.style.color='var(--purple)'">
+                <option value="" disabled selected></option>
+                <option>Club Night</option>
+                <option>Beach Party</option>
+                <option>Festival</option>
+                <option>Wedding</option>
+                <option>Corporate Event</option>
+                <option>Private Party</option>
+                <option>Sunset Session</option>
+                <option>Other</option>
+              </select>
+              <label for="f-type">Event Type</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <input type="text" id="f-location" placeholder=" " />
+            <label for="f-location">Location / City</label>
+          </div>
+
+          <div class="field">
+            <textarea id="f-msg" rows="4" placeholder=" "></textarea>
+            <label for="f-msg">Tell us about the night…</label>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button type="submit" class="btn btn-primary" style="flex:1;">Send Request ↗</button>
+            <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20book%20you%20for%20an%20event."
+              target="_blank" class="btn btn-wa-big" style="flex:1;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                <path
+                  d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.859L.057 23.428a.5.5 0 0 0 .609.61l5.57-1.474A11.951 11.951 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.362-.216-3.743.99.998-3.742-.234-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+          <p id="formMsg"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════ EVENT TYPES ═══════════ -->
+  <section class="section">
+    <div class="section-head">
+      <p class="page-kicker reveal">// What We Cover</p>
+      <h2 class="reveal" style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,6rem);letter-spacing:.05em;">
+        Event <span class="grad">Types</span></h2>
+    </div>
+    <div class="event-types-grid">
+      <div class="et-card reveal"><span class="et-icon">🏖️</span>
+        <div class="et-title">Beach Parties</div>
+        <p class="et-desc">Sunset sessions and midnight beach sets across Goa's coastline. Organic house, afro grooves,
+          deep electronic — tailored for the ocean air.</p>
+      </div>
+      <div class="et-card reveal" style="transition-delay:.06s;"><span class="et-icon">🎛️</span>
+        <div class="et-title">Club Nights</div>
+        <p class="et-desc">Residencies and guest sets at Goa's top nightclubs — peak hour energy, reading the crowd,
+          building unforgettable nights from open to close.</p>
+      </div>
+      <div class="et-card reveal" style="transition-delay:.12s;"><span class="et-icon">🎪</span>
+        <div class="et-title">Festivals</div>
+        <p class="et-desc">Stage performances at music festivals and large-scale outdoor events. From intimate
+          500-person gatherings to 5,000+ crowd festival stages.</p>
+      </div>
+      <div class="et-card reveal" style="transition-delay:.06s;"><span class="et-icon">💍</span>
+        <div class="et-title">Weddings</div>
+        <p class="et-desc">Bespoke wedding sets blending Bollywood, EDM, Konkani and Western music — a seamless,
+          memorable journey for your most special night.</p>
+      </div>
+      <div class="et-card reveal" style="transition-delay:.12s;"><span class="et-icon">🏢</span>
+        <div class="et-title">Corporate Events</div>
+        <p class="et-desc">Professional, polished sets for brand launches, product events, office parties and corporate
+          galas. Goa, Mumbai, Bangalore and beyond.</p>
+      </div>
+      <div class="et-card reveal" style="transition-delay:.18s;"><span class="et-icon">🔒</span>
+        <div class="et-title">Private Sessions</div>
+        <p class="et-desc">Exclusive private parties, villa sessions, luxury resort events and intimate gatherings. Full
+          production or DJ-only setups available.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════ TESTIMONIALS MARQUEE ═══════════ -->
+  <section class="section" style="padding-top:clamp(40px,5vw,60px);">
+    <div class="section-head">
+      <p class="page-kicker reveal">// What Clients Say</p>
+      <h2 class="reveal" style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);letter-spacing:.05em;">
+        Voices from <span class="grad-blue">the Floor</span></h2>
+    </div>
+    <div class="marquee-outer reveal">
+      <div class="marquee-inner">
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"IMPRINT's set at the Benaulim beach party was absolutely insane — the crowd never stopped moving. He reads
+            the floor better than anyone I've seen in Goa!"</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#c026d3,#06b6d4)">R</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Rahul M.</strong><small
+                style="color:var(--muted);font-size:.72rem;">Mumbai</small></div>
+          </div>
+        </div>
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"Hired IMPRINT for our corporate event in Panjim. The professionalism, the energy — absolutely on point.
+            Our guests were thrilled from start to finish."</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#ec4899,#7c3aed)">P</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Priya S.</strong><small
+                style="color:var(--muted);font-size:.72rem;">Bangalore</small></div>
+          </div>
+        </div>
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"Imprint reads a crowd like no one else. Every set is a full event in itself — he completely transforms the
+            room and the energy."</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#7b2fff,#ff2d78)">R</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Riya S.</strong><small
+                style="color:var(--muted);font-size:.72rem;">Hilltop, Vagator</small></div>
+          </div>
+        </div>
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"One of the best wedding DJs I've ever seen — mixed Bollywood, EDM and Konkani so seamlessly. The dance
+            floor was never empty, not once!"</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)">A</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Ananya &amp; Dev</strong><small
+                style="color:var(--muted);font-size:.72rem;">Goa Wedding</small></div>
+          </div>
+        </div>
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"The energy Strobe brings to Goa is truly unmatched. Pure sonic design meets nightlife perfection. Booked
+            twice — will book again."</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#00d4ff,#7b2fff)">K</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Karan M.</strong><small
+                style="color:var(--muted);font-size:.72rem;">Festival Curator</small></div>
+          </div>
+        </div>
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"Booked him for our brand launch — the floor didn't stop until 4 AM. Complete legend. Fastest booking
+            response too via WhatsApp."</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#ff2d78,#7b2fff)">A</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Aanya P.</strong><small
+                style="color:var(--muted);font-size:.72rem;">Brand Director, Mumbai</small></div>
+          </div>
+        </div>
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"From the first beat to the last drop, DJ Imprint kept our festival crowd of 1,500 completely hooked for
+            the full two-hour set."</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">V</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Vikram T.</strong><small
+                style="color:var(--muted);font-size:.72rem;">Event Organiser</small></div>
+          </div>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"IMPRINT's set at the Benaulim beach party was absolutely insane — the crowd never stopped moving. He reads
+            the floor better than anyone I've seen in Goa!"</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#c026d3,#06b6d4)">R</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Rahul M.</strong><small
+                style="color:var(--muted);font-size:.72rem;">Mumbai</small></div>
+          </div>
+        </div>
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"Hired IMPRINT for our corporate event in Panjim. The professionalism, the energy — absolutely on point.
+            Our guests were thrilled from start to finish."</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#ec4899,#7c3aed)">P</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Priya S.</strong><small
+                style="color:var(--muted);font-size:.72rem;">Bangalore</small></div>
+          </div>
+        </div>
+        <div class="r-card">
+          <div style="color:#f5c842;margin-bottom:10px;">★★★★★</div>
+          <p>"The energy Strobe brings to Goa is truly unmatched. Pure sonic design meets nightlife perfection. Booked
+            twice — will book again."</p>
+          <div class="r-author">
+            <div class="r-avatar" style="background:linear-gradient(135deg,#00d4ff,#7b2fff)">K</div>
+            <div><strong style="display:block;color:#fff;font-size:.9rem;">Karan M.</strong><small
+                style="color:var(--muted);font-size:.72rem;">Festival Curator</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section class="section">
+    <div class="section-head">
+      <p class="page-kicker reveal">// Need to Know</p>
+      <h2 class="reveal" style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);letter-spacing:.05em;">
+        Booking <span class="grad">FAQ</span></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4>How far in advance should I book?</h4><span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">For club nights and beach parties, we recommend booking at least 2–3 weeks in
+            advance. For festivals, weddings, and corporate events, 4–8 weeks ahead is ideal to guarantee availability
+            and allow for proper planning and production coordination.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4>What areas does IMPRINT cover?</h4><span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">IMPRINT is based in Goa and covers all of Goa — North, South, Panjim, Calangute,
+            Anjuna, Vagator, Benaulim, Canacona and beyond. Travel bookings to Mumbai, Bangalore, Delhi and other Indian
+            cities are available with applicable travel arrangements.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4>What equipment and setup do you need?</h4><span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">IMPRINT can perform with a standard DJ setup (CDJ-2000NXS or Technics turntables,
+            DJM-900NXS mixer). For smaller or private events, he also performs with his own portable Traktor setup. Full
+            production — sound, lighting, visuals — can be arranged through Strobe Nightlife.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4>What genres and event types are available?</h4><span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">IMPRINT specialises in Organic House, Afro House, Deep House, Melodic Techno and
+            Electronic music for club and festival settings. For weddings and private events, he adapts to Bollywood,
+            EDM, Konkani, Western pop and more — creating a fully bespoke set for your occasion.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4>What is the fastest way to confirm a booking?</h4><span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">The quickest way to confirm is via WhatsApp at +91 99235 80022. You can also email
+            mail@strobenightlife.com or DM @imprintverse on Instagram. For urgent same-week bookings, WhatsApp is
+            strongly recommended for fastest response.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <h4>Can IMPRINT do live Twitch/streaming sets?</h4><span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">Yes — IMPRINT streams live sets on Twitch at twitch.tv/imprintverse. Online/virtual
+            event bookings for branded streams, online festivals and digital events are available. Reach out via
+            WhatsApp or email for virtual event packages.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <!-- FOOTER -->
+ <footer>
+    <div class="footer-brand">Imprintverse</div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/imprintverse/" target="_blank" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="20" height="20" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+        </svg>
+      </a>
+      <a href="https://www.facebook.com/imprintverse" target="_blank" aria-label="Facebook">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+        </svg>
+      </a>
+      <a href="https://soundcloud.com/imprintverse" target="_blank" aria-label="SoundCloud">
+        <svg width="18" height="12" viewBox="0 0 40 20" fill="currentColor">
+          <path
+            d="M0 14.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-6C3 7.67 2.33 7 1.5 7S0 7.67 0 8.5v6zm4-2c0 .83.67 1.5 1.5 1.5S7 13.33 7 12.5v-9C7 2.67 6.33 2 5.5 2S4 2.67 4 3.5v9zm4 1.5c0 .83.67 1.5 1.5 1.5S11 14.83 11 14v-8c0-.83-.67-1.5-1.5-1.5S8 5.17 8 6v8zm4 .5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5.5C15 4.67 14.33 4 13.5 4S12 4.67 12 5.5v9zm5.5 1.5c4.14 0 7.5-3.36 7.5-7.5S21.64 1 17.5 1c-3.4 0-6.27 2.27-7.19 5.37C10.87 6.14 11.5 6.77 11.5 7.5v7c0 .6-.35 1.11-.86 1.35.89.42 1.86.65 2.86.65z" />
+        </svg>
+      </a>
+      <a href="https://www.mixcloud.com/imprintverse/" target="_blank" aria-label="Mixcloud">
+        <svg width="16" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.06 5.12A8 8 0 0 1 24 13a7.85 7.85 0 0 1-1.86 5.06A3 3 0 0 1 21 24H7a5 5 0 0 1-5-5A4.62 4.62 0 0 1 3.26 15 7 7 0 0 1 3 13 7 7 0 0 1 10 6a6.82 6.82 0 0 1 2.86.62 8.08 8.08 0 0 1 4.2-1.5z" />
+        </svg>
+      </a>
+      <a href="https://www.twitch.tv/imprintverse" target="_blank" aria-label="Twitch">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z" />
+        </svg>
+      </a>
+      <a href="https://x.com/imprintverse" target="_blank" aria-label="X">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+        </svg>
+      </a>
+      <a href="https://youtube.com/@imprintverse" target="_blank" aria-label="YouTube" title="YouTube">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg>
+      </a>
+           <a href="https://open.spotify.com/" target="_blank" aria-label="Spotify">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.301 1.02zm1.44-3.3c-.301.42-.84.539-1.262.239-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.221c-.6.18-1.2-.18-1.38-.781-.18-.6.18-1.2.78-1.38 4.2-1.26 11.28-1.02 15.781 1.62.54.3.72.96.42 1.5-.299.54-.959.72-1.681.42z" />
+          </svg>
+        </a>
+        <a href="https://music.apple.com/us/new" target="_blank" area-label="Apple Music">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M21.5 6.75C21.5 8.16 20.25 9.4 18.83 9.4H18v7.22c0 2.22-1.57 4.14-3.72 4.62-2.73.61-5.18-1.46-5.18-4.04 0-1.89 1.31-3.52 3.16-3.95a4.014 4.014 0 0 1 4.58 2.24V4.54c0-.7.49-1.3 1.18-1.42l3.41-.57A1.5 1.5 0 0 1 23 4.03v1.89c0 .46-.37.83-.83.83h-.67zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c.8 0 1.58-.09 2.32-.27-.6-.57-.96-1.36-.96-2.23 0-1.51 1.05-2.82 2.53-3.16.89-.2 1.79-.04 2.52.4.45-.63.98-1.18 1.59-1.64V12c0-5.52-4.48-10-10-10z" />
+          </svg>
+        </a>
+    </div>
+    <div class="footer-copy">
+      Imprintverse © 2026 <br> Artist Managed by Strobe Nightlife <br> Website Crafted by Cyber Creative
+    </div>
+  </footer>
+
+  <a href="#top" id="backToTop">↑</a>
+   <script src="../js/main.js"></script>
+
+ 
+</body>
+
+</html>

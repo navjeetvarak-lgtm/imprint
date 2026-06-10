@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPRINT — About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+   <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <canvas id="bgCanvas"></canvas>
+  <div class="grid-3d"></div>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="brand">IMPRINT<span class="brand-dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="music.html">Music</a>
+      <a href="gigs.html">Gigs</a>
+      <a href="venues.html">Venues</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="booking.html" class="nav-cta">Bookings</a>
+    </nav>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" id="home">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+
+    <!-- Floating portrait frame -->
+    <div class="hero-portrait-frame">
+      <div class="orbit-ring"></div>
+      <div class="orbit-ring2"></div>
+      <img src="../assets/hero3.jpeg" alt="IMPRINT — Ankith Kedar" />
+    </div>
+
+    <div class="page-hero-content">
+      <h1 class="page-title">
+        <span
+          style="display:block;font-size:0.45em;letter-spacing:0.2em;color:var(--muted);font-family:var(--font-mono);margin-bottom:8px;">
+          ARCHITECT OF</span>
+        <span class="grad">GOA'S NIGHTLIFE</span>
+      </h1>
+      <p class="page-hero-sub">DJ · Producer · Nightlife Curator · Goa, India</p>
+      <div></div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        
+        <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20book%20you%20for%20an%20event."
+          target="_blank" class="btn btn-primary">Book IMPRINT</a>
+        <a href="music.html" class="btn btn-ghost">Hear the Music ↓</a>
+        
+      </div>
+    </div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MAIN ABOUT SECTION -->
+  <section class="section" id="about">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-left">
+        <img src="../assets/hero8.jpeg" alt="Imprints — Ankith Kedar" loading="lazy" />
+        <div class="img-badge">
+          <div class="img-badge-label">Since</div>
+          <div class="img-badge-val">2013</div>
+        </div>
+      </div>
+      <div class="reveal-right">
+        <div class="about-text">
+          <p class="page-kicker" style="margin-bottom:0;">// The Man Behind the Music</p>
+          <h2>Sound is my <span class="grad">architecture.</span></h2>
+          <p><strong>Ankith Kedar</strong> by name, performing as <strong>IMPRINT</strong> — the literal translation of
+            his first name. A visionary DJ &amp; Producer with a unique ability to fuse sounds with hypnotic beats,
+            creating a sonic journey that transports you to a realm of pure bliss.</p>
+          <p>Founder of Goa's first professional artist agency <strong>Strobe Nightlife</strong> and Creative Director
+            of <strong>Flashlab Creative</strong> one of Goa's leading creative agencies. He doesn't just play music, he
+            curates experiences at various venues across Goa's coast side. From sunset sessions to high-energy
+            peak-hours in the state's loudest rooms.</p>
+          <p>Every tune is carefully selected. Every night is intentional. Architect for redefining Goa's Nightlife.</p>
+
+          <!-- STATS -->
+          <div class="stats">
+            <div class="stat"><span class="stat-num" data-target="75">0</span><span
+                style="font-family:var(--font-display);font-size:1.8rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">+</span><span
+                class="stat-label">Events Played</span></div>
+            <div class="stat"><span class="stat-num" data-target="20">0</span><span
+                style="font-family:var(--font-display);font-size:1.8rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">+</span><span
+                class="stat-label">Venues</span></div>
+            <div class="stat"><span class="stat-num" data-target="12">0</span><span
+                style="font-family:var(--font-display);font-size:1.8rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">+</span><span
+                class="stat-label">Years Active</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- IDENTITY SECTION -->
+  <section class="section">
+    <div style="text-align:center;margin-bottom:56px;">
+      <p class="page-kicker reveal">// Roles &amp; Identity</p>
+      <h2 class="reveal"
+        style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,6rem);letter-spacing:0.05em;">What <span
+          class="grad">IMPRINT</span> Does</h2>
+    </div>
+    <div class="identity-grid">
+      <div class="identity-card reveal">
+        <span class="identity-icon">🎛️</span>
+        <div class="identity-title">DJ & Producer</div>
+        <p class="identity-desc">Crafting immersive sonic journeys from sunset sets to peak-hour rooms. Specialising in
+          Organic House, Afro House, Deep House, and Electronic music — every mix is a carefully curated story.</p>
+      </div>
+      <div class="identity-card reveal" style="transition-delay:0.1s;">
+        <span class="identity-icon">🏢</span>
+        <div class="identity-title">Strobe Nightlife</div>
+        <p class="identity-desc">Founder of Goa's first professional artist management and booking agency. Strobe
+          Nightlife connects world-class talent with Goa's most iconic venues and events, setting a new standard for
+          nightlife in India.</p>
+      </div>
+      <div class="identity-card reveal" style="transition-delay:0.2s;">
+        <span class="identity-icon">🎨</span>
+        <div class="identity-title">Flashlab Creative</div>
+        <p class="identity-desc">As Creative Director of Flashlab Creative — one of Goa's leading creative agencies —
+          IMPRINT brings the same visionary aesthetic to brands, visuals, and event experiences that he brings to music.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- GENRES -->
+  <section class="section">
+    <div style="text-align:center;margin-bottom:48px;">
+      <p class="page-kicker reveal">// Sound Profile</p>
+      <h2 class="reveal"
+        style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,6rem);letter-spacing:0.05em;">The <span
+          class="grad-blue">Genres</span></h2>
+    </div>
+    <div class="genre-cloud reveal" style="justify-content:center;">
+      <span class="genre-tag purple">Organic House</span>
+      <span class="genre-tag blue">Deep House</span>
+      <span class="genre-tag pink">Afro House</span>
+      <span class="genre-tag gold">Electronic</span>
+      <span class="genre-tag purple">Techno</span>
+      <span class="genre-tag blue">Melodic House</span>
+      <span class="genre-tag pink">DJ + Sitar Fusion</span>
+      <span class="genre-tag gold">Sunset Sessions</span>
+      <span class="genre-tag purple">Peak Hour</span>
+      <span class="genre-tag blue">Bollywood Fusion</span>
+      <span class="genre-tag pink">EDM</span>
+      <span class="genre-tag gold">Konkani</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TIMELINE -->
+  <section class="section">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;">
+      <div>
+        <p class="page-kicker reveal">// The Journey</p>
+        <h2 class="reveal"
+          style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,5rem);letter-spacing:0.05em;margin-bottom:48px;">
+          A Decade of <span class="grad">Sonic Stories</span></h2>
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <div class="timeline-year">2013</div>
+            <div class="timeline-title">The Beginning</div>
+            <p class="timeline-desc">Started crafting sonic journeys in Goa. First steps behind the decks, learning the
+              craft and building a signature sound.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2016</div>
+            <div class="timeline-title">Strobe Nightlife Founded</div>
+            <p class="timeline-desc">Founded Goa's first professional artist management and booking agency, changing the
+              landscape for DJs and event producers in the state.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2018</div>
+            <div class="timeline-title">Flashlab Creative</div>
+            <p class="timeline-desc">Took on the role of Creative Director at Flashlab Creative, merging music with
+              brand storytelling and high-end visual production.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-title">"A Selection" Released</div>
+            <p class="timeline-desc">Dropped the debut album "A Selection" — 9 tracks of curated sonic artistry released
+              on SoundCloud, building a growing international audience.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2024–25</div>
+            <div class="timeline-title">Hilltop, Mayan & Beyond</div>
+            <p class="timeline-desc">Played Goa's most prestigious venues — Hilltop Vagator, Mayan Beach Club, Baja,
+              Tikibab, Dynamo — and released two new compilations.</p>
+          </div>
+          <div class="timeline-item" style="margin-bottom:0;">
+            <div class="timeline-year">2025 →</div>
+            <div class="timeline-title">The Next Chapter</div>
+            <p class="timeline-desc">Live on Mixcloud with recorded sets. Expanding bookings across India. The sound
+              evolves. The journey continues.</p>
+          </div>
+        </div>
+      </div>
+      <div style="padding-top:60px;display:flex;flex-direction:column;gap:20px;">
+        <div class="reveal-right" style="border-radius:24px;overflow:hidden;aspect-ratio:4/5;position:relative;">
+          <img src="../assets/hero6.jpeg" alt="IMPRINT Live" style="width:100%;height:100%;object-fit:cover;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(3,3,6,0.7),transparent 50%);">
+          </div>
+        </div>
+        <div class="reveal-right" style="border-radius:24px;overflow:hidden;aspect-ratio:4/3;position:relative;">
+          <img src="../assets/dj4.jpeg" alt="IMPRINT Behind the Decks" style="width:100%;height:100%;object-fit:cover;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(3,3,6,0.75),transparent 50%);">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ASSOCIATIONS -->
+  <section class="section" style="text-align:center;">
+    <p class="page-kicker reveal">// Associations &amp; Collabs</p>
+    <h2 class="reveal"
+      style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);letter-spacing:0.05em;margin-bottom:16px;">
+      Part of <span class="grad">Something Bigger</span></h2>
+    <p class="reveal" style="color:var(--muted);max-width:500px;margin:0 auto 40px;line-height:1.8;font-size:0.95rem;">
+      From agencies to artists — a growing network of creative collaborators shaping Goa's cultural scene.</p>
+    <div class="brands-row reveal" style="justify-content:center;">
+      <span class="brand-pill">Strobe Nightlife</span>
+      <span class="brand-pill">Flashlab Creative</span>
+      <span class="brand-pill">Mayan Beach Club</span>
+      <span class="brand-pill">Baja Beach Club</span>
+      <span class="brand-pill">Hilltop Vagator</span>
+      <span class="brand-pill">Tikibab</span>
+      <span class="brand-pill">Dynamo</span>
+      <span class="brand-pill">Aura Anjuna</span>
+      <span class="brand-pill">Sopon Canacona</span>
+      <span class="brand-pill">Mehandi Hasan</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section class="section" style="text-align:center;padding-bottom:clamp(80px,10vw,120px);">
+    <p class="page-kicker reveal">// Let's Create</p>
+    <h2 class="reveal"
+      style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,6rem);letter-spacing:0.05em;margin-bottom:24px;">
+      Book <span class="grad">IMPRINT</span></h2>
+    <p class="reveal" style="color:var(--muted);max-width:440px;margin:0 auto 40px;line-height:1.8;">Available for club
+      nights, beach parties, festivals, weddings, corporate events and private sessions across Goa and India.</p>
+    <div class="reveal" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20book%20you%20for%20an%20event."
+        target="_blank" class="btn btn-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+          <path
+            d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.859L.057 23.428a.5.5 0 0 0 .609.61l5.57-1.474A11.951 11.951 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.362-.216-3.743.99.998-3.742-.234-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+        </svg>
+        WhatsApp Booking
+      </a>
+      <a href="mailto:mail@strobenightlife.com" class="btn btn-ghost">Email Agency ↗</a>
+    </div>
+  </section>
+
+   <!-- FOOTER -->
+<footer>
+    <div class="footer-brand">Imprintverse</div>
+    <div class="footer-links">
+      <a href="https://music.apple.com/us/new" target="_blank" aria-label="Apple Music"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3v12.5a3.5 3.5 0 1 1-2-3.16V7.5l-6 1.5v8.5a3.5 3.5 0 1 1-2-3.16V6l10-3z"/></svg></a>
+      <a href="https://www.instagram.com/imprintverse/" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/imprintverse" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://soundcloud.com/imprintverse" target="_blank" aria-label="SoundCloud"><svg width="18" height="12" viewBox="0 0 40 20" fill="currentColor"><path d="M0 14.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-6C3 7.67 2.33 7 1.5 7S0 7.67 0 8.5v6zm4-2c0 .83.67 1.5 1.5 1.5S7 13.33 7 12.5v-9C7 2.67 6.33 2 5.5 2S4 2.67 4 3.5v9zm4 1.5c0 .83.67 1.5 1.5 1.5S11 14.83 11 14v-8c0-.83-.67-1.5-1.5-1.5S8 5.17 8 6v8zm4 .5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5.5C15 4.67 14.33 4 13.5 4S12 4.67 12 5.5v9zm5.5 1.5c4.14 0 7.5-3.36 7.5-7.5S21.64 1 17.5 1c-3.4 0-6.27 2.27-7.19 5.37C10.87 6.14 11.5 6.77 11.5 7.5v7c0 .6-.35 1.11-.86 1.35.89.42 1.86.65 2.86.65z"/></svg></a>
+      <a href="https://www.mixcloud.com/imprintverse/" target="_blank" aria-label="Mixcloud"><svg width="16" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.06 5.12A8 8 0 0 1 24 13a7.85 7.85 0 0 1-1.86 5.06A3 3 0 0 1 21 24H7a5 5 0 0 1-5-5A4.62 4.62 0 0 1 3.26 15 7 7 0 0 1 3 13 7 7 0 0 1 10 6a6.82 6.82 0 0 1 2.86.62 8.08 8.08 0 0 1 4.2-1.5z"/></svg></a>
+      <a href="https://www.twitch.tv/imprintverse" target="_blank" aria-label="Twitch"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+      <a href="https://x.com/imprintverse" target="_blank" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://youtube.com/@imprintverse" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://open.spotify.com/" target="_blank" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.301 1.02zm1.44-3.3c-.301.42-.84.539-1.262.239-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.221c-.6.18-1.2-.18-1.38-.781-.18-.6.18-1.2.78-1.38 4.2-1.26 11.28-1.02 15.781 1.62.54.3.72.96.42 1.5-.299.54-.959.72-1.681.42z"/></svg></a>
+    </div>
+    <div class="footer-copy">Imprintverse © 2026 <br> Artist Managed by Strobe Nightlife <br> Website Crafted by Cyber Creative</div>
+  </footer>
+  <a href="#" id="backToTop">↑</a>
+   <script src="../js/main.js"></script>
+
+ 
+</body>
+
+</html>

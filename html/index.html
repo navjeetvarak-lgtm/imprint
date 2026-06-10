@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPRINTS — DJ · Producer · Nightlife Curator · Goa</title>
+  <meta name="description"
+    content="IMPRINT (Ankith Kedar) — Visionary DJ & Producer from Goa, India. Founder of Strobe Nightlife." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+ 
+</head>
+
+<body>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <div class="loader" id="loader">
+    <div class="loader-ring"></div>
+    <div class="loader-name">IMPRINT</div>
+    <div class="loader-bar"><div class="loader-bar-inner"></div></div>
+  </div>
+
+  <canvas id="bgCanvas"></canvas>
+  <div class="floaters" id="floaters"></div>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <a href="#home" class="brand">IMPRINT<span class="brand-dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="music.html">Music</a>
+      <a href="gigs.html">Gigs & Tour</a>
+      <a href="venues.html">Venues</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="booking.html" class="nav-cta">Bookings</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <video class="hero-video-bg" id="heroBgVideo" autoplay muted loop playsinline poster="../assets/hero2.jpeg">
+      <source src="../assets/vid5.mp4" type="video/mp4" />
+    </video>
+
+    <div class="hero-overlay" id="heroOverlay"></div>
+
+    <!-- ✅ id="heroContent" added -->
+    <div class="hero-content" id="heroContent">
+      <p class="kicker">Goa, India</p>
+      <h1 class="hero-title">
+        <span class="line-main">IMPRINT</span>
+      </h1>
+      <p class="hero-role">DJ &nbsp;·&nbsp; Producer &nbsp;·&nbsp; Nightlife Curator</p>
+      <p class="hero-typed" id="typed"><span class="cursor">|</span></p>
+      <div class="hero-cta">
+        <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20book%20you%20for%20an%20event." target="_blank" class="btn btn-primary">Bookings</a>
+        <a href="#music" class="btn btn-ghost">Listen ↓</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://music.apple.com/us/new" target="_blank" aria-label="Apple Music">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3v12.5a3.5 3.5 0 1 1-2-3.16V7.5l-6 1.5v8.5a3.5 3.5 0 1 1-2-3.16V6l10-3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/imprintverse/" target="_blank" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.facebook.com/imprintverse" target="_blank" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://soundcloud.com/imprintverse" target="_blank" aria-label="SoundCloud">
+          <svg width="20" height="14" viewBox="0 0 40 20" fill="currentColor"><path d="M0 14.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-6C3 7.67 2.33 7 1.5 7S0 7.67 0 8.5v6zm4-2c0 .83.67 1.5 1.5 1.5S7 13.33 7 12.5v-9C7 2.67 6.33 2 5.5 2S4 2.67 4 3.5v9zm4 1.5c0 .83.67 1.5 1.5 1.5S11 14.83 11 14v-8c0-.83-.67-1.5-1.5-1.5S8 5.17 8 6v8zm4 .5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5.5C15 4.67 14.33 4 13.5 4S12 4.67 12 5.5v9zm5.5 1.5c4.14 0 7.5-3.36 7.5-7.5S21.64 1 17.5 1c-3.4 0-6.27 2.27-7.19 5.37C10.87 6.14 11.5 6.77 11.5 7.5v7c0 .6-.35 1.11-.86 1.35.89.42 1.86.65 2.86.65z"/></svg>
+        </a>
+        <a href="https://www.mixcloud.com/imprintverse/" target="_blank" aria-label="Mixcloud">
+          <svg width="20" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.06 5.12A8 8 0 0 1 24 13a7.85 7.85 0 0 1-1.86 5.06A3 3 0 0 1 21 24H7a5 5 0 0 1-5-5A4.62 4.62 0 0 1 3.26 15 7 7 0 0 1 3 13 7 7 0 0 1 10 6a6.82 6.82 0 0 1 2.86.62 8.08 8.08 0 0 1 4.2-1.5z"/></svg>
+        </a>
+        <a href="https://www.twitch.tv/imprintverse" target="_blank" aria-label="Twitch">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+        </a>
+        <a href="https://x.com/imprintverse" target="_blank" aria-label="X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://youtube.com/@imprintverse" target="_blank" aria-label="YouTube">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://open.spotify.com/" target="_blank" aria-label="Spotify">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.301 1.02zm1.44-3.3c-.301.42-.84.539-1.262.239-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.221c-.6.18-1.2-.18-1.38-.781-.18-.6.18-1.2.78-1.38 4.2-1.26 11.28-1.02 15.781 1.62.54.3.72.96.42 1.5-.299.54-.959.72-1.681.42z"/></svg>
+        </a>
+        
+      </div>
+    </div>
+
+    <!-- ✅ Unmute button — id="unmuteBtn" added -->
+    <button class="unmute-btn muted" id="unmuteBtn" onclick="toggleMute()">
+      <svg class="icon-mute" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+        <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
+      </svg>
+      <svg class="icon-sound" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      </svg>
+      TAP FOR SOUND
+    </button>
+
+    <div class="hero-visualizer" id="heroViz"></div>
+    <div class="scroll-cue" id="scrollCue">Scroll</div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <p class="kicker reveal">// 01 — Origin</p>
+      <h2 class="reveal">Architect of <span class="grad">Goa's Nightlife</span></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-left">
+        <img src="../assets/hero3.jpeg" alt="Imprints — Ankith Kedar" loading="lazy" />
+      </div>
+      <div class="reveal-right">
+        <div class="about-text">
+          <h2>"Sound is my <span class="grad">architecture."</span></h2>
+          <p><strong>Ankith Kedar</strong> by Name, performing as <strong>IMPRINT</strong> the literal translation of his first name. A visionary DJ &amp; Producer with a unique ability to fuse sounds with hypnotic beats, creating a sonic journey that transports you to a realm of pure bliss.
+          Founder of Goa's first professional artist agency <strong>Strobe Nightlife</strong> and Creative Director of <strong>Flashlab Creative</strong> one of Goa's leading creative agency, he doesn't just play music, he curates experiences at various venues across Goa's coast side. From sunset sessions to high-energy peak-hours in the states loudest rooms.
+          Every tune is carefully selected. Every night is intentional. Architect for redefining Goa's Nightlife.</p>
+         <div class="stats">
+         <div class="stat">
+          <div class="stat-value">
+          <span class="stat-num" data-target="75">0</span>
+          <span class="stat-plus">+</span>
+         </div>
+        <span class="stat-label">Events Played</span>
+      </div>
+
+      <div class="stat">
+      <div class="stat-value">
+      <span class="stat-num" data-target="20">0</span>
+      <span class="stat-plus">+</span>
+      </div>
+      <span class="stat-label">Venues</span>
+     </div>
+
+    <div class="stat">
+      <div class="stat-value">
+      <span class="stat-num" data-target="12">0</span>
+      <span class="stat-plus">+</span>
+     </div>
+    <span class="stat-label">Years Active</span>
+     </div>
+     </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- QUICK LINKS STRIP -->
+  <section class="strip">
+    <div class="strip-inner">
+      <a href="about.html" class="strip-card">
+        <div class="strip-icon">🎧</div>
+        <div class="strip-label">01 — Origin</div>
+        <div class="strip-title">Bio</div>
+        <div class="strip-desc">The architect behind Goa's nightlife. Ankith Kedar. Founder of Strobe Nightlife.</div>
+        <div class="strip-arrow">Explore ↗</div>
+      </a>
+      <a href="music.html" class="strip-card">
+        <div class="strip-icon">🎵</div>
+        <div class="strip-label">02 — Sound</div>
+        <div class="strip-title">Music</div>
+        <div class="strip-desc">Original EPs, albums, original sets, live recordings, SoundCloud & MixCloud Streams.</div>
+        <div class="strip-arrow">Listen ↗</div>
+      </a>
+      <a href="gigs.html" class="strip-card">
+        <div class="strip-icon">📅</div>
+        <div class="strip-label">03 — Events</div>
+        <div class="strip-title">Gigs & Tour</div>
+        <div class="strip-desc">Upcoming shows, past highlights & the stages that shaped the sound.</div>
+        <div class="strip-arrow">View ↗</div>
+      </a>
+      <a href="showcase.html" class="strip-card">
+        <div class="strip-icon">📸</div>
+        <div class="strip-label">04 — Gallery</div>
+        <div class="strip-title">Showcase</div>
+        <div class="strip-desc">Behind the booth. The nights, the rooms, the energy — captured.</div>
+        <div class="strip-arrow">Browse ↗</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section class="section music-section" id="music">
+    <div class="section-head">
+      <p class="kicker reveal">// 02 — Sound</p>
+      <h2 class="reveal">Latest <span class="grad-blue">Music</span></h2>
+    </div>
+    <div class="eq-bars reveal" style="margin-bottom:40px;">
+      <div class="eq-bar" style="animation-duration:0.5s"></div>
+      <div class="eq-bar" style="animation-duration:0.8s"></div>
+      <div class="eq-bar" style="animation-duration:0.6s"></div>
+      <div class="eq-bar" style="animation-duration:0.45s"></div>
+      <div class="eq-bar" style="animation-duration:0.7s"></div>
+      <div class="eq-bar" style="animation-duration:0.55s"></div>
+      <div class="eq-bar" style="animation-duration:0.9s"></div>
+      <div class="eq-bar" style="animation-duration:0.5s"></div>
+    </div>
+    <div class="sc-embeds reveal">
+      <div class="sc-embed-wrap">
+        <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2284022180&color=%237b2fff&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      </div>
+      <div class="sc-embed-wrap">
+        <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1948465335&color=%237b2fff&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      </div>
+      <div class="sc-embed-wrap">
+        <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1948451183&color=%237b2fff&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      </div>
+      <div class="sc-embed-wrap">
+        <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1876560543&color=%237b2fff&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      </div>
+    </div>
+    <div class="mix-grid" style="margin-top:48px;">
+      <a href="https://soundcloud.com/imprintverse/sets/vibe" target="_blank" style="text-decoration:none;">
+        <article class="mix-card reveal">
+          <img src="../assets/alb1.jpeg" alt="A Selection" loading="lazy" />
+          <div class="mix-info"><h4>A Selection</h4><p>Album · 9 Tracks · Oct 2023</p></div>
+        </article>
+      </a>
+      <a href="https://soundcloud.com/imprintverse/sets/neutral-selection-compilation" target="_blank" style="text-decoration:none;">
+        <article class="mix-card reveal" style="transition-delay:0.1s">
+          <img src="../assets/alb2.jpeg" alt="Neutral Selection" loading="lazy" />
+          <div class="mix-info"><h4>Neutral Selection</h4><p>Compilation · 9 Tracks · Apr 2025</p></div>
+        </article>
+      </a>
+      <a href="https://soundcloud.com/imprintverse/sets/organic-selection" target="_blank" style="text-decoration:none;">
+        <article class="mix-card reveal" style="transition-delay:0.2s">
+          <img src="../assets/alb3.jpeg" alt="Organic Selection" loading="lazy" />
+          <div class="mix-info"><h4>Organic Selection</h4><p>Compilation · 22 Tracks · Jan 2025</p></div>
+        </article>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="https://soundcloud.com/imprintverse" target="_blank" class="btn btn-ghost">All Tracks on SoundCloud ↗</a>
+    </div>
+
+    <!-- MIXCLOUD -->
+    <div class="mc-section reveal">
+      <h3>Live on <span class="grad-blue">Mixcloud</span></h3>
+      <p>@IMPRINTVERSE — Stream live recordings &amp; DJ sets</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:32px;">
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;">
+            <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#52003F,#7B52FF);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="28" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.06 5.12A8 8 0 0 1 24 13a7.85 7.85 0 0 1-1.86 5.06A3 3 0 0 1 21 24H7a5 5 0 0 1-5-5A4.62 4.62 0 0 1 3.26 15 7 7 0 0 1 3 13 7 7 0 0 1 10 6a6.82 6.82 0 0 1 2.86.62 8.08 8.08 0 0 1 4.2-1.5z"/></svg>
+            </div>
+            <div>
+              <div id="mcPlayerTitle" style="font-size:1.1rem;font-weight:700;margin-bottom:4px;">Select a mix</div>
+              <div id="mcPlayerSub" style="font-family:'DM Mono',monospace;font-size:0.7rem;color:rgba(240,238,255,0.45);letter-spacing:0.1em;">IMPRINTS · Mixcloud</div>
+            </div>
+          </div>
+          <div id="mcPlayer" style="border-radius:12px;overflow:hidden;min-height:120px;display:flex;align-items:center;justify-content:center;color:rgba(240,238,255,0.3);font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;border:1px dashed rgba(255,255,255,0.08);">
+            ← Click a mix to play
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="track-item" onclick="loadMix('Imprint - Live Recording (DJ Only)','Mayan Beach Club, Goa','imprintverse/imprint-live-recording-dj-only-from-mayan-beach-club')" style="cursor:pointer;">
+            <span class="track-num">01</span>
+            <div class="track-info"><h4>Live Recording (DJ Only)</h4><p>Mayan Beach Club · Goa</p></div>
+            <div class="track-play">▶</div>
+          </div>
+          <div class="track-item" onclick="loadMix('Live Recording · Tikibab','Benaulim · Nov 2025','imprintverse/live-recording-from-tikibab-benaulim-30-nov-2025')" style="cursor:pointer;">
+            <span class="track-num">02</span>
+            <div class="track-info"><h4>Live Recording · Tikibab</h4><p>Benaulim · Nov 30, 2025</p></div>
+            <div class="track-play">▶</div>
+          </div>
+          <div class="track-item" onclick="loadMix('Dynacode Radio 01','Debut Edition · Imprints','imprintverse/imprint-dynacode-radio-01-debut-edition')" style="cursor:pointer;">
+            <span class="track-num">03</span>
+            <div class="track-info"><h4>Dynacode Radio 01</h4><p>Debut Edition · Imprints</p></div>
+            <div class="track-play">▶</div>
+          </div>
+          <div class="track-item" onclick="window.open('https://www.mixcloud.com/imprintverse/','_blank')" style="cursor:pointer;">
+            <span class="track-num">04</span>
+            <div class="track-info"><h4>All Mixes</h4><p>View full profile on Mixcloud</p></div>
+            <div class="track-play">↗</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="https://www.mixcloud.com/imprintverse/" target="_blank" class="btn btn-ghost">All Mixes on Mixcloud ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- GIGS -->
+  <section class="section" id="gigs">
+    <div class="section-head">
+      <p class="kicker reveal">// 03 — Tour</p>
+      <h2 class="reveal">Upcoming <span class="grad">Gigs</span></h2>
+    </div>
+    <div class="events-grid">
+      <div class="event-card reveal">
+        <div class="event-date-block"><div class="event-day">12</div><div class="event-month">May '26</div></div>
+        <div class="event-info"><h3>Strobe Presents: Neon Tide</h3><p>Anjuna Beach Club · Goa · 10:00 PM</p></div>
+        <a href="https://wa.me/919923580022?text=Hi%2C%20RSVP%20for%20Neon%20Tide%20May%2012." target="_blank" class="event-tag">RSVP</a>
+      </div>
+      <div class="event-card reveal" style="transition-delay:0.1s">
+        <div class="event-date-block"><div class="event-day">24</div><div class="event-month">May '26</div></div>
+        <div class="event-info"><h3>Flashlab Live</h3><p>Hilltop · Vagator, Goa · 9:00 PM</p></div>
+        <a href="https://wa.me/919923580022?text=Hi%2C%20RSVP%20for%20Flashlab%20Live%20May%2024." target="_blank" class="event-tag">RSVP</a>
+      </div>
+      <div class="event-card reveal" style="transition-delay:0.2s">
+        <div class="event-date-block"><div class="event-day">07</div><div class="event-month">Jun '26</div></div>
+        <div class="event-info"><h3>Sunset Sessions Vol. 10</h3><p>Sinq Beach Club · Candolim, Goa · 6:00 PM</p></div>
+        <a href="https://wa.me/919923580022?text=Hi%2C%20RSVP%20for%20Sunset%20Sessions%20Vol%2010." target="_blank" class="event-tag">RSVP</a>
+      </div>
+      <div class="event-card reveal" style="transition-delay:0.3s">
+        <div class="event-date-block"><div class="event-day">21</div><div class="event-month">Jun '26</div></div>
+        <div class="event-info"><h3>Imprint × Bombay Underground</h3><p>Antisocial · Mumbai · 11:00 PM</p></div>
+        <a href="https://wa.me/919923580022?text=Hi%2C%20RSVP%20for%20Imprints%20x%20Bombay%20Underground." target="_blank" class="event-tag">RSVP</a>
+      </div>
+      <div class="event-card reveal" style="transition-delay:0.4s;opacity:0.5;">
+        <div class="event-date-block" style="background:rgba(255,255,255,0.04);border-color:var(--border);"><div class="event-day" style="background:none;-webkit-text-fill-color:var(--muted);">03</div><div class="event-month">Nov '24</div></div>
+        <div class="event-info"><h3>Afters at Aura Beach Cafe</h3><p>Aura Beach Cafe · Anjuna, Goa</p></div>
+        <span class="event-tag past">Played</span>
+      </div>
+      <div class="event-card reveal" style="transition-delay:0.5s;opacity:0.5;">
+        <div class="event-date-block" style="background:rgba(255,255,255,0.04);border-color:var(--border);"><div class="event-day" style="background:none;-webkit-text-fill-color:var(--muted);">03</div><div class="event-month">Nov '24</div></div>
+        <div class="event-info"><h3>Sunset Stories · Baja, Benaulim</h3><p>Baja Beach Club · Benaulim, Goa</p></div>
+        <span class="event-tag past">Played</span>
+      </div>
+    </div>
+    <div style="margin-top:40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+      <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20enquire%20about%20upcoming%20gigs." target="_blank" class="btn btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="flex-shrink:0;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.859L.057 23.428a.5.5 0 0 0 .609.61l5.57-1.474A11.951 11.951 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.362-.216-3.743.99.998-3.742-.234-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        &nbsp;Enquire via WhatsApp
+      </a>
+      <p style="font-family:'DM Mono',monospace;font-size:0.72rem;color:rgba(240,238,255,0.45);letter-spacing:0.1em;">Fastest response via WhatsApp &nbsp;·&nbsp; Also available for Twitch live stream bookings</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" id="testimonials">
+    <div class="section-head">
+      <p class="kicker reveal">// 04 — Voices</p>
+      <h2 class="reveal">Testimonials & <span class="grad">Review</span></h2>
+    </div>
+    <div class="marquee-outer reveal">
+      <div class="marquee-inner">
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"IMPRINT's set at the Benaulim beach party was absolutely insane — the crowd never stopped moving. He reads the floor better than anyone I've seen in Goa!"</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#c026d3,#06b6d4)">R</div><div><strong style="display:block;color:#fff;">Rahul M.</strong><small style="color:rgba(240,238,255,0.45);">Mumbai</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"Imprint reads a crowd like no one else. Every set is an event — he transforms the room completely."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#7b2fff,#ff2d78)">R</div><div><strong style="display:block;color:#fff;">Riya S.</strong><small style="color:rgba(240,238,255,0.45);">Hilltop, Vagator</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"Hired IMPRINT for our corporate event in Panjim. The professionalism, the energy — absolutely on point. Our guests were thrilled."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#ec4899,#7c3aed)">P</div><div><strong style="display:block;color:#fff;">Priya S.</strong><small style="color:rgba(240,238,255,0.45);">Bangalore</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"The energy Strobe brings to Goa is unmatched. Pure sonic design meets nightlife perfection."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#00d4ff,#7b2fff)">K</div><div><strong style="display:block;color:#fff;">Karan M.</strong><small style="color:rgba(240,238,255,0.45);">Festival Curator</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"One of the best wedding DJs — mixed Bollywood, EDM and Konkani seamlessly. Dance floor was never empty!"</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)">A</div><div><strong style="display:block;color:#fff;">Ananya &amp; Dev</strong><small style="color:rgba(240,238,255,0.45);">Goa</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"Booked him for our brand launch — the floor didn't stop until 4 AM. Absolute legend."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#ff2d78,#7b2fff)">A</div><div><strong style="display:block;color:#fff;">Aanya P.</strong><small style="color:rgba(240,238,255,0.45);">Brand Director, Mumbai</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"Strobe Nightlife events are legendary in Goa. Sound, lights, energy — everything is world-class."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#c026d3,#ec4899)">S</div><div><strong style="display:block;color:#fff;">Sam F.</strong><small style="color:rgba(240,238,255,0.45);">Goa</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"From the first beat to the last drop, DJ K3DAR kept our festival crowd of 1500 completely hooked."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">V</div><div><strong style="display:block;color:#fff;">Vikram T.</strong><small style="color:rgba(240,238,255,0.45);">Event Organiser</small></div></div></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"IMPRINT's set at the Benaulim beach party was absolutely insane — the crowd never stopped moving. He reads the floor better than anyone I've seen in Goa!"</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#c026d3,#06b6d4)">R</div><div><strong style="display:block;color:#fff;">Rahul M.</strong><small style="color:rgba(240,238,255,0.45);">Mumbai</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"Imprint reads a crowd like no one else. Every set is an event — he transforms the room completely."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#7b2fff,#ff2d78)">R</div><div><strong style="display:block;color:#fff;">Riya S.</strong><small style="color:rgba(240,238,255,0.45);">Hilltop, Vagator</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"Hired DJ K3DAR for our corporate event in Panjim. The professionalism, the energy — absolutely on point."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#ec4899,#7c3aed)">P</div><div><strong style="display:block;color:#fff;">Priya S.</strong><small style="color:rgba(240,238,255,0.45);">Bangalore</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"The energy Strobe brings to Goa is unmatched. Pure sonic design meets nightlife perfection."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#00d4ff,#7b2fff)">K</div><div><strong style="display:block;color:#fff;">Karan M.</strong><small style="color:rgba(240,238,255,0.45);">Festival Curator</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"One of the best wedding DJs — mixed Bollywood, EDM and Konkani seamlessly. Dance floor was never empty!"</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#06b6d4,#0284c7)">A</div><div><strong style="display:block;color:#fff;">Ananya &amp; Dev</strong><small style="color:rgba(240,238,255,0.45);">Goa</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"Booked him for our brand launch — the floor didn't stop until 4 AM. Absolute legend."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#ff2d78,#7b2fff)">A</div><div><strong style="display:block;color:#fff;">Aanya P.</strong><small style="color:rgba(240,238,255,0.45);">Brand Director, Mumbai</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"Strobe Nightlife events are legendary in Goa. Sound, lights, energy — everything is world-class."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#c026d3,#ec4899)">S</div><div><strong style="display:block;color:#fff;">Sam F.</strong><small style="color:rgba(240,238,255,0.45);">Goa</small></div></div></div>
+        <div class="r-card"><div style="color:#f5c842;margin-bottom:12px;">★★★★★</div><p>"From the first beat to the last drop, DJ K3DAR kept our festival crowd of 1500 completely hooked."</p><div class="r-author"><div class="r-avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">V</div><div><strong style="display:block;color:#fff;">Vikram T.</strong><small style="color:rgba(240,238,255,0.45);">Event Organiser</small></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BOOKING -->
+  <section class="section" id="booking">
+  <div class="section-head">
+    <p class="kicker reveal">// 05 — Bookings</p>
+    <h2 class="reveal">Book <span class="grad">Imprint</span></h2>
+  </div>
+
+  <div class="booking-grid">
+    <div class="reveal-left">
+      <div class="booking-info">
+        <h4>Exclusively managed by <span class="grad">Strobe Nightlife.</span></h4>
+        <p style="margin-bottom: 24px;">Available for club nights, beach events, festivals, brand activations, private parties, and corporate events across Goa, India, and internationally.</p>
+        
+        <div style="margin-bottom: 32px;">
+          <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20book%20you%20for%20an%20event." target="_blank" class="btn btn-wa" style="display: inline-flex; align-items: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" style="flex-shrink:0; margin-right: 8px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.859L.057 23.428a.5.5 0 0 0 .609.61l5.57-1.474A11.951 11.951 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.362-.216-3.743.99.998-3.742-.234-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Book via WhatsApp
+          </a>
+        </div>
+
+        <div class="contact-links">
+          <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20book%20you%20for%20an%20event." target="_blank" class="contact-link">
+            <span class="contact-link-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.859L.057 23.428a.5.5 0 0 0 .609.61l5.57-1.474A11.951 11.951 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.523-5.168-1.432l-.362-.216-3.743.99.998-3.742-.234-.374A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg></span>
+            <div class="contact-link-info">
+              <div class="contact-link-label">Connect via WhatsApp</div>
+              <div class="contact-link-val">+91 99235 80022</div>
+            </div>
+          </a>
+          <a href="mailto:mail@strobenightlife.com" class="contact-link">
+            <span class="contact-link-icon"><svg width="22" height="22" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M2 4C0.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H2z" fill="#f2f2f2"/><path d="M2 4l10 8.5L22 4" fill="none" stroke="#EA4335" stroke-width="2.5"/><path d="M0 6l10 8.5L20 6" fill="#EA4335"/><path d="M0 6v12h4V9.5L0 6z" fill="#C5221F"/><path d="M24 6v12h-4V9.5L24 6z" fill="#C5221F"/><path d="M4 9.5V20h16V9.5L12 18 4 9.5z" fill="#f2f2f2"/></svg></span>
+            <div class="contact-link-info">
+              <div class="contact-link-label">Booking agency</div>
+              <div class="contact-link-val">mail@strobenightlife.com</div>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/imprintverse/" target="_blank" class="contact-link">
+            <span class="contact-link-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#igGrad)" stroke-width="1.8"><defs><linearGradient id="igGrad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="url(#igGrad)" stroke="none"/></svg></span>
+            <div class="contact-link-info">
+              <div class="contact-link-label">Instagram DM</div>
+              <div class="contact-link-val">@imprintverse</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal-right">
+      <form class="book-form glass" id="bookForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <input type="text" id="f-name" placeholder=" " required />
+            <label for="f-name">Your Name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="f-email" placeholder=" " required />
+            <label for="f-email">Email</label>
+          </div>
+        </div>
+        <div class="field">
+          <input type="text" id="f-event" placeholder=" " />
+          <label for="f-event">Event / Venue Name</label>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <input type="text" id="f-date" placeholder=" " onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'" />
+            <label for="f-date">Event Date</label>
+          </div>
+          <div class="field">
+            <input type="text" id="f-phone" placeholder=" " />
+            <label for="f-phone">Phone / WhatsApp</label>
+          </div>
+        </div>
+        <div class="field">
+          <textarea id="f-msg" rows="4" placeholder=" "></textarea>
+          <label for="f-msg">Tell us about the night…</label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Request</button>
+        <p id="formMsg" style="text-align:center; margin-top:16px; font-family:var(--font-mono); font-size:0.8rem; color:var(--blue);"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Imprintverse</div>
+    <div class="footer-links">
+      <a href="https://music.apple.com/us/new" target="_blank" aria-label="Apple Music"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3v12.5a3.5 3.5 0 1 1-2-3.16V7.5l-6 1.5v8.5a3.5 3.5 0 1 1-2-3.16V6l10-3z"/></svg></a>
+      <a href="https://www.instagram.com/imprintverse/" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/imprintverse" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://soundcloud.com/imprintverse" target="_blank" aria-label="SoundCloud"><svg width="18" height="12" viewBox="0 0 40 20" fill="currentColor"><path d="M0 14.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-6C3 7.67 2.33 7 1.5 7S0 7.67 0 8.5v6zm4-2c0 .83.67 1.5 1.5 1.5S7 13.33 7 12.5v-9C7 2.67 6.33 2 5.5 2S4 2.67 4 3.5v9zm4 1.5c0 .83.67 1.5 1.5 1.5S11 14.83 11 14v-8c0-.83-.67-1.5-1.5-1.5S8 5.17 8 6v8zm4 .5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5.5C15 4.67 14.33 4 13.5 4S12 4.67 12 5.5v9zm5.5 1.5c4.14 0 7.5-3.36 7.5-7.5S21.64 1 17.5 1c-3.4 0-6.27 2.27-7.19 5.37C10.87 6.14 11.5 6.77 11.5 7.5v7c0 .6-.35 1.11-.86 1.35.89.42 1.86.65 2.86.65z"/></svg></a>
+      <a href="https://www.mixcloud.com/imprintverse/" target="_blank" aria-label="Mixcloud"><svg width="16" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.06 5.12A8 8 0 0 1 24 13a7.85 7.85 0 0 1-1.86 5.06A3 3 0 0 1 21 24H7a5 5 0 0 1-5-5A4.62 4.62 0 0 1 3.26 15 7 7 0 0 1 3 13 7 7 0 0 1 10 6a6.82 6.82 0 0 1 2.86.62 8.08 8.08 0 0 1 4.2-1.5z"/></svg></a>
+      <a href="https://www.twitch.tv/imprintverse" target="_blank" aria-label="Twitch"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+      <a href="https://x.com/imprintverse" target="_blank" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://youtube.com/@imprintverse" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://open.spotify.com/" target="_blank" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.301 1.02zm1.44-3.3c-.301.42-.84.539-1.262.239-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.221c-.6.18-1.2-.18-1.38-.781-.18-.6.18-1.2.78-1.38 4.2-1.26 11.28-1.02 15.781 1.62.54.3.72.96.42 1.5-.299.54-.959.72-1.681.42z"/></svg></a>
+    </div>
+    <div class="footer-copy">Imprintverse © 2026 <br> Artist Managed by Strobe Nightlife <br> Website Crafted by Cyber Creative</div>
+  </footer>
+
+  <a href="#home" id="backToTop">↑</a>
+   <script src="../js/main.js"></script>
+
+ 
+</body>
+</html>

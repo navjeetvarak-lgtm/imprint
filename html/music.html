@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMPRINT — Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <canvas id="bgCanvas"></canvas>
+  <div class="grid-3d"></div>
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="brand">IMPRINT<span class="brand-dot">.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="music.html" class="active">Music</a>
+      <a href="gigs.html">Gigs</a>
+      <a href="venues.html">Venues</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="booking.html" class="nav-cta">Bookings</a>
+    </nav>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" id="top">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+
+    <!-- 3D Vinyl Decoration -->
+    <div class="hero-vinyl">
+      <svg viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="vg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7b2fff" />
+            <stop offset="50%" stop-color="#c026d3" />
+            <stop offset="100%" stop-color="#00d4ff" />
+          </linearGradient>
+          <radialGradient id="labelGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(123,47,255,0.8)" />
+            <stop offset="100%" stop-color="rgba(7,7,26,0.9)" />
+          </radialGradient>
+          <filter id="vglow">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <!-- Shadow -->
+        <ellipse cx="220" cy="420" rx="160" ry="16" fill="rgba(123,47,255,0.2)" filter="url(#vglow)" />
+        <!-- Outer edge -->
+        <circle cx="220" cy="210" r="200" fill="rgba(8,3,22,0.97)" stroke="url(#vg)" stroke-width="2" />
+        <!-- Grooves -->
+        <circle cx="220" cy="210" r="195" fill="none" stroke="rgba(123,47,255,0.06)" stroke-width="0.8" />
+        <circle cx="220" cy="210" r="185" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="0.8" />
+        <circle cx="220" cy="210" r="175" fill="none" stroke="rgba(123,47,255,0.06)" stroke-width="0.8" />
+        <circle cx="220" cy="210" r="165" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="0.8" />
+        <circle cx="220" cy="210" r="155" fill="none" stroke="rgba(123,47,255,0.06)" stroke-width="0.8" />
+        <circle cx="220" cy="210" r="145" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="0.8" />
+        <circle cx="220" cy="210" r="135" fill="none" stroke="rgba(123,47,255,0.06)" stroke-width="0.8" />
+        <circle cx="220" cy="210" r="125" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="0.8" />
+        <circle cx="220" cy="210" r="115" fill="none" stroke="rgba(123,47,255,0.08)" stroke-width="0.8" />
+        <circle cx="220" cy="210" r="105" fill="none" stroke="rgba(0,212,255,0.06)" stroke-width="0.8" />
+        <!-- Label -->
+        <circle cx="220" cy="210" r="80" fill="url(#labelGrad)" stroke="url(#vg)" stroke-width="1.5" />
+        <!-- Label text -->
+        <text x="220" y="195" text-anchor="middle" font-family="'Bebas Neue',sans-serif" font-size="22"
+          fill="rgba(240,238,255,0.9)" letter-spacing="4">IMPRINT</text>
+        <text x="220" y="216" text-anchor="middle" font-family="monospace" font-size="7" fill="rgba(0,212,255,0.7)"
+          letter-spacing="3">A SELECTION</text>
+        <text x="220" y="232" text-anchor="middle" font-family="monospace" font-size="6" fill="rgba(240,238,255,0.3)"
+          letter-spacing="2">STROBE NIGHTLIFE</text>
+        <!-- Center spindle -->
+        <circle cx="220" cy="210" r="10" fill="rgba(3,3,6,1)" stroke="url(#vg)" stroke-width="1.5" />
+        <circle cx="220" cy="210" r="5" fill="var(--blue)" filter="url(#vglow)" />
+        <!-- Light reflection -->
+        <ellipse cx="170" cy="150" rx="25" ry="10" fill="rgba(255,255,255,0.04)" transform="rotate(-35,170,150)" />
+        <!-- Floating notes -->
+        <text x="370" y="120" font-size="24" fill="rgba(0,212,255,0.4)" font-family="serif">♪</text>
+        <text x="40" y="160" font-size="18" fill="rgba(255,45,120,0.35)" font-family="serif">♫</text>
+        <text x="380" y="280" font-size="16" fill="rgba(123,47,255,0.45)" font-family="serif">♩</text>
+        <text x="30" y="290" font-size="20" fill="rgba(0,212,255,0.3)" font-family="serif">♬</text>
+      </svg>
+    </div>
+
+    <div class="page-hero-content">
+      <h1 class="page-title">
+        <span class="grad-blue">Sound</span><br />
+        <span style="color:var(--white);">Design</span>
+      </h1>
+      <p
+        style="color:var(--muted);font-size:clamp(0.9rem,1.5vw,1.05rem);max-width:440px;line-height:1.8;margin-bottom:36px;">
+        Cinematic Background Scores, Music Production, Instrument & Vocal Recording, Mixing & Mastering</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;">
+        <a href="https://soundcloud.com/imprintverse" target="_blank" class="btn btn-primary">SoundCloud ↗</a>
+        <a href="https://www.mixcloud.com/imprintverse/" target="_blank" class="btn btn-ghost">Mixcloud ↗</a>
+      </div>
+    </div>
+    <!-- Hero EQ bars -->
+    <div class="hero-viz" id="heroViz"></div>
+    <div class="scroll-cue">Scroll</div>
+  </section>
+
+  <div class="divider"></div>
+   <!-- STREAMING PLATFORMS -->
+<section class="section" id="platforms">
+    <div class="section-head">
+      <p class="page-kicker reveal">Find IMPRINT On</p>
+      <h2 class="reveal"
+        style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,5rem);letter-spacing:0.05em;">Streaming <span
+          class="grad-blue">Platforms</span></h2>
+    </div>
+
+    <div class="platforms-grid" style="margin-bottom: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+      <a href="https://open.spotify.com/user/imprintverse" target="_blank" class="platform-card featured-card reveal"
+        style="padding: 2.5rem 2rem; border-color: rgba(30, 215, 96, 0.3);">
+        <span class="platform-icon" style="font-size: 3rem; margin-bottom: 1rem; display: block;">🟢</span>
+        <div class="platform-name" style="font-size: 1.5rem; font-weight: bold;">Spotify</div>
+        <div class="platform-handle" style="font-size: 1rem; opacity: 0.7;">@imprintverse</div>
+      </a>
+      
+      <a href="https://music.apple.com/profile/imprintverse" target="_blank" class="platform-card featured-card reveal"
+        style="transition-delay:0.08s; padding: 2.5rem 2rem; border-color: rgba(252, 60, 68, 0.3);">
+        <span class="platform-icon" style="font-size: 3rem; margin-bottom: 1rem; display: block;">🍎</span>
+        <div class="platform-name" style="font-size: 1.5rem; font-weight: bold;">Apple Music</div>
+        <div class="platform-handle" style="font-size: 1rem; opacity: 0.7;">@imprintverse</div>
+      </a>
+    </div>
+
+    <div class="platforms-grid">
+      <a href="https://soundcloud.com/imprintverse" target="_blank" class="platform-card reveal"
+        style="transition-delay:0.16s;">
+        <span class="platform-icon">☁️</span>
+        <div class="platform-name">SoundCloud</div>
+        <div class="platform-handle">@imprintverse</div>
+      </a>
+      <a href="https://www.mixcloud.com/imprintverse/" target="_blank" class="platform-card reveal"
+        style="transition-delay:0.24s;">
+        <span class="platform-icon">🎧</span>
+        <div class="platform-name">Mixcloud</div>
+        <div class="platform-handle">@imprintverse</div>
+      </a>
+      <a href="https://www.twitch.tv/imprintverse" target="_blank" class="platform-card reveal"
+        style="transition-delay:0.32s;">
+        <span class="platform-icon">🟣</span>
+        <div class="platform-name">Twitch</div>
+        <div class="platform-handle">@imprintverse</div>
+      </a>
+      <a href="https://youtube.com/@imprintverse" target="_blank" class="platform-card reveal"
+        style="transition-delay:0.40s;">
+        <span class="platform-icon">▶️</span>
+        <div class="platform-name">YouTube</div>
+        <div class="platform-handle">@imprintverse</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SOUNDCLOUD LATEST TRACKS -->
+  <section class="section" id="tracks">
+    <div class="section-head">
+      <p class="page-kicker reveal">Latest Drops</p>
+      <h2 class="reveal"
+        style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,6rem);letter-spacing:0.05em;">Latest <span
+          class="grad">Tracks</span></h2>
+      <div class="eq-bars reveal" style="justify-content:center;margin-top:20px;">
+        <div class="eq-bar" style="animation-duration:0.45s"></div>
+        <div class="eq-bar" style="animation-duration:0.7s"></div>
+        <div class="eq-bar" style="animation-duration:0.55s"></div>
+        <div class="eq-bar" style="animation-duration:0.4s"></div>
+        <div class="eq-bar" style="animation-duration:0.8s"></div>
+        <div class="eq-bar" style="animation-duration:0.5s"></div>
+        <div class="eq-bar" style="animation-duration:0.65s"></div>
+        <div class="eq-bar" style="animation-duration:0.75s"></div>
+        <div class="eq-bar" style="animation-duration:0.45s"></div>
+        <div class="eq-bar" style="animation-duration:0.6s"></div>
+        <div class="eq-bar" style="animation-duration:0.9s"></div>
+        <div class="eq-bar" style="animation-duration:0.5s"></div>
+      </div>
+    </div>
+
+    <div class="sc-grid reveal">
+      <div class="sc-wrap">
+        <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2284022180&color=%237b2fff&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      </div>
+      <div class="sc-wrap">
+        <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1948465335&color=%237b2fff&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      </div>
+      <div class="sc-wrap">
+        <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1948451183&color=%237b2fff&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      </div>
+      <div class="sc-wrap">
+        <iframe width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1876560543&color=%237b2fff&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+      </div>
+    </div>
+
+  </section>
+  <div class="divider"></div>
+
+  <!-- ALBUMS -->
+  <section class="section" id="albums">
+    <div class="section-head">
+      <p class="page-kicker reveal">Discography</p>
+      <h2 class="reveal"
+        style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,6rem);letter-spacing:0.05em;">Albums &amp;
+        <span class="grad-blue">Compilations</span></h2>
+    </div>
+
+    <div class="albums-grid">
+      <!-- Album 1 -->
+      <a href="https://soundcloud.com/imprintverse/sets/vibe" target="_blank" style="text-decoration:none;">
+        <div class="album-card reveal">
+          <div class="album-thumb">
+            <img src="../assets/alb1.jpeg" alt="A Selection" />
+            <div class="album-thumb-overlay">
+              <div class="play-circle">▶</div>
+            </div>
+            <div class="album-vinyl">
+              <div class="album-vinyl-dot"></div>
+            </div>
+          </div>
+          <div class="album-body">
+            <div class="album-title">A Selection</div>
+            <div class="album-meta">Album · 9 Tracks · Oct 2023</div>
+            <span class="album-tag">SoundCloud</span>
+          </div>
+        </div>
+      </a>
+      <!-- Album 2 -->
+      <a href="https://soundcloud.com/imprintverse/sets/neutral-selection-compilation" target="_blank"
+        style="text-decoration:none;">
+        <div class="album-card reveal" style="transition-delay:0.1s;">
+          <div class="album-thumb">
+            <img src="../assets/alb2.jpeg" alt="Neutral Selection" />
+            <div class="album-thumb-overlay">
+              <div class="play-circle">▶</div>
+            </div>
+            <div class="album-vinyl">
+              <div class="album-vinyl-dot"></div>
+            </div>
+          </div>
+          <div class="album-body">
+            <div class="album-title">Neutral Selection</div>
+            <div class="album-meta">Compilation · 9 Tracks · Apr 2025</div>
+            <span class="album-tag">SoundCloud</span>
+          </div>
+        </div>
+      </a>
+      <!-- Album 3 -->
+      <a href="https://soundcloud.com/imprintverse/sets/organic-selection" target="_blank"
+        style="text-decoration:none;">
+        <div class="album-card reveal" style="transition-delay:0.2s;">
+          <div class="album-thumb">
+            <img src="../assets/alb3.jpeg" alt="Organic Selection" />
+            <div class="album-thumb-overlay">
+              <div class="play-circle">▶</div>
+            </div>
+            <div class="album-vinyl">
+              <div class="album-vinyl-dot"></div>
+            </div>
+          </div>
+          <div class="album-body">
+            <div class="album-title">Organic Selection</div>
+            <div class="album-meta">Compilation · 22 Tracks · Jan 2025</div>
+            <span class="album-tag">SoundCloud</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- MIXCLOUD PLAYER -->
+  <section class="section" id="mixcloud">
+    <div class="section-head">
+      <p class="page-kicker reveal">Live Sets &amp; Recordings</p>
+      <h2 class="reveal"
+        style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,6rem);letter-spacing:0.05em;">Mixes on <span
+          class="grad">Mixcloud</span></h2>
+    </div>
+
+    <div class="mc-player reveal">
+      <div class="mc-top">
+        <div class="mc-disc-wrap">
+          <div class="mc-disc" id="mcDisc">
+            <div class="mc-disc-grooves"></div>
+            <div class="mc-disc-center"></div>
+          </div>
+          <div class="mc-disc-ring"></div>
+        </div>
+        <div class="mc-info">
+          <div class="mc-info-label">Now Playing</div>
+          <div class="mc-info-title" id="mcTitle">Select a Mix</div>
+          <div class="mc-info-sub" id="mcSub">IMPRINTS · Mixcloud</div>
+        </div>
+      </div>
+
+      <div class="mc-seek" onclick="mcSeek(event)" id="mcSeekBar">
+        <div class="mc-seek-fill" id="mcFill"></div>
+      </div>
+      <div class="mc-times">
+        <span id="mcTimeNow">0:00</span>
+        <span id="mcTimeDur">--:--</span>
+      </div>
+
+      <div class="mc-viz" id="mcViz"></div>
+
+      <div class="mc-controls">
+        <button class="mc-btn" onclick="if(mcWidget)mcWidget.seek(0)">⏮</button>
+        <button class="mc-btn mc-play-btn" id="mcPlayBtn" onclick="mcTogglePlay()">▶</button>
+        <button class="mc-btn" onclick="if(mcWidget)mcWidget.seek(9999)">⏭</button>
+      </div>
+
+      <div class="mc-embed-area" id="mcEmbedArea"></div>
+
+      <div class="mc-tracks">
+        <div class="mc-track" id="mcT1"
+          onclick="playMcTrack('Live Recording (DJ Only)','Mayan Beach Club · Goa','imprintverse/imprint-live-recording-dj-only-from-mayan-beach-club',1)">
+          <span class="mc-track-num">01</span>
+          <div class="mc-track-info">
+            <div class="mc-track-name">Live Recording (DJ Only)</div>
+            <div class="mc-track-sub">Mayan Beach Club · Goa</div>
+          </div>
+          <span class="mc-track-dur">50:46</span>
+        </div>
+        <div class="mc-track" id="mcT2"
+          onclick="playMcTrack('Live Recording · Tikibab','Benaulim · Nov 30, 2025','imprintverse/live-recording-from-tikibab-benaulim-30-nov-2025',2)">
+          <span class="mc-track-num">02</span>
+          <div class="mc-track-info">
+            <div class="mc-track-name">Live Recording · Tikibab</div>
+            <div class="mc-track-sub">Benaulim · Nov 30, 2025</div>
+          </div>
+          <span class="mc-track-dur">60:00</span>
+        </div>
+        <div class="mc-track" id="mcT3"
+          onclick="playMcTrack('Dynacode Radio 01','Debut Edition · Imprints','imprintverse/imprint-dynacode-radio-01-debut-edition',3)">
+          <span class="mc-track-num">03</span>
+          <div class="mc-track-info">
+            <div class="mc-track-name">Dynacode Radio 01</div>
+            <div class="mc-track-sub">Debut Edition · Imprints</div>
+          </div>
+          <span class="mc-track-dur">60:00</span>
+        </div>
+        <div class="mc-track" onclick="window.open('https://www.mixcloud.com/imprintverse/','_blank')">
+          <span class="mc-track-num">↗</span>
+          <div class="mc-track-info">
+            <div class="mc-track-name">All Mixes</div>
+            <div class="mc-track-sub">View full profile on Mixcloud</div>
+          </div>
+          <span class="mc-track-dur"></span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:28px;">
+      <a href="https://www.mixcloud.com/imprintverse/" target="_blank" class="btn btn-ghost">Full Profile on Mixcloud
+        ↗</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+ 
+
+  <!-- FOOTER -->
+<footer>
+    <div class="footer-brand">Imprintverse</div>
+    <div class="footer-links">
+      <a href="https://music.apple.com/us/new" target="_blank" aria-label="Apple Music"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17 3v12.5a3.5 3.5 0 1 1-2-3.16V7.5l-6 1.5v8.5a3.5 3.5 0 1 1-2-3.16V6l10-3z"/></svg></a>
+      <a href="https://www.instagram.com/imprintverse/" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.facebook.com/imprintverse" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="https://soundcloud.com/imprintverse" target="_blank" aria-label="SoundCloud"><svg width="18" height="12" viewBox="0 0 40 20" fill="currentColor"><path d="M0 14.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-6C3 7.67 2.33 7 1.5 7S0 7.67 0 8.5v6zm4-2c0 .83.67 1.5 1.5 1.5S7 13.33 7 12.5v-9C7 2.67 6.33 2 5.5 2S4 2.67 4 3.5v9zm4 1.5c0 .83.67 1.5 1.5 1.5S11 14.83 11 14v-8c0-.83-.67-1.5-1.5-1.5S8 5.17 8 6v8zm4 .5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V5.5C15 4.67 14.33 4 13.5 4S12 4.67 12 5.5v9zm5.5 1.5c4.14 0 7.5-3.36 7.5-7.5S21.64 1 17.5 1c-3.4 0-6.27 2.27-7.19 5.37C10.87 6.14 11.5 6.77 11.5 7.5v7c0 .6-.35 1.11-.86 1.35.89.42 1.86.65 2.86.65z"/></svg></a>
+      <a href="https://www.mixcloud.com/imprintverse/" target="_blank" aria-label="Mixcloud"><svg width="16" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.06 5.12A8 8 0 0 1 24 13a7.85 7.85 0 0 1-1.86 5.06A3 3 0 0 1 21 24H7a5 5 0 0 1-5-5A4.62 4.62 0 0 1 3.26 15 7 7 0 0 1 3 13 7 7 0 0 1 10 6a6.82 6.82 0 0 1 2.86.62 8.08 8.08 0 0 1 4.2-1.5z"/></svg></a>
+      <a href="https://www.twitch.tv/imprintverse" target="_blank" aria-label="Twitch"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg></a>
+      <a href="https://x.com/imprintverse" target="_blank" aria-label="X"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="https://youtube.com/@imprintverse" target="_blank" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+      <a href="https://open.spotify.com/" target="_blank" aria-label="Spotify"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.659.301 1.02zm1.44-3.3c-.301.42-.84.539-1.262.239-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.221c-.6.18-1.2-.18-1.38-.781-.18-.6.18-1.2.78-1.38 4.2-1.26 11.28-1.02 15.781 1.62.54.3.72.96.42 1.5-.299.54-.959.72-1.681.42z"/></svg></a>
+    </div>
+    <div class="footer-copy">Imprintverse © 2026 <br> Artist Managed by Strobe Nightlife <br> Website Crafted by Cyber Creative</div>
+  </footer>
+  <a href="#top" id="backToTop">↑</a>
+   <script src="../js/main.js"></script>
+
+  
+</body>
+
+</html>
