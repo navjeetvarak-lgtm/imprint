@@ -1,5 +1,22 @@
 /* IMPRINT — main.js — Refactored */
 
+/* Booking toggle */
+window.toggleBooking = function() {
+  const expanded = document.getElementById('bookingExpanded');
+  const collapsed = document.getElementById('bookingCollapsed');
+  const isOpen = expanded.classList.contains('open');
+  if (isOpen) {
+    expanded.classList.remove('open');
+    collapsed.style.display = '';
+  } else {
+    collapsed.style.display = 'none';
+    expanded.classList.add('open');
+    setTimeout(() => {
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initSharedComponents();
   initPageSpecifics();
