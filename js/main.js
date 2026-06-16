@@ -1,7 +1,7 @@
 /* IMPRINT — main.js — Refactored */
 
 /* Booking toggle */
-window.toggleBooking = function() {
+window.toggleBooking = function () {
   const expanded = document.getElementById('bookingExpanded');
   const collapsed = document.getElementById('bookingCollapsed');
   const isOpen = expanded.classList.contains('open');
@@ -27,18 +27,18 @@ function initSharedComponents() {
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.matchMedia("(pointer: coarse)").matches;
-  
+
   if (isTouchDevice) {
     // Hide custom cursor on mobile/touch devices
     if (dot) dot.style.display = 'none';
     if (ring) ring.style.display = 'none';
   } else if (dot && ring) {
     let mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
-    
+
     // Override CSS transitions to remove 'transform' delay (since we calculate smoothness in JS)
     dot.style.transition = 'width 0.2s, height 0.2s, background-color 0.2s';
     ring.style.transition = 'width 0.3s, height 0.3s, border-color 0.3s';
-    
+
     document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
     function animateCursor() {
       rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
