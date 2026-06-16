@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMPRINT — Admin Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body {
+      background: #030306;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .admin-container {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+      display: none; /* hidden until logged in */
+    }
+    .login-container {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      margin-top: 100px;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 1rem;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--purple);
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--purple);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn-submit:hover {
+      background: var(--blue);
+    }
+    #status {
+      margin-top: 20px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+    }
+    .status-error { color: #ff2d78; }
+    .status-success { color: #00d4ff; }
+    .status-loading { color: #7b2fff; }
+    
+    /* Simple list to show recently added */
+    .gigs-list {
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+    .gig-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .gig-row-title { font-family: var(--font-body); }
+    .gig-row-date { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+    .btn-del {
+      background: rgba(255,45,120,0.2);
+      color: #ff2d78;
+      border: 1px solid #ff2d78;
+      padding: 4px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div class="login-container" id="loginBox">
+    <h1>Admin Login</h1>
+    <div class="form-group">
+      <input type="password" id="adminPwd" placeholder="Enter Password">
+    </div>
+    <button class="btn-submit" onclick="checkLogin()">LOGIN</button>
+    <div id="loginStatus" style="margin-top:10px; color:#ff2d78;"></div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div class="admin-container" id="adminBox">
+    <h1>Add New Gig</h1>
+    <form id="gigForm">
+      <div class="form-group">
+        <label>Event Title *</label>
+        <input type="text" id="gTitle" required placeholder="e.g. Neon Tide">
+      </div>
+      <div class="form-group" style="display:flex; gap:16px;">
+        <div style="flex:1;">
+          <label>Date *</label>
+          <input type="date" id="gDate" required>
+        </div>
+        <div style="flex:1;">
+          <label>Time</label>
+          <input type="text" id="gTime" placeholder="e.g. 08:30 PM">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Venue *</label>
+        <input type="text" id="gVenue" required placeholder="e.g. Anjuna Beach Club, Goa">
+      </div>
+      <div class="form-group">
+        <label>Booking URL</label>
+        <input type="url" id="gBooking" placeholder="https://wa.me/...">
+      </div>
+      <div class="form-group">
+        <label>Event Poster Image * (Max 2MB)</label>
+        <input type="file" id="gImage" accept="image/*" required>
+      </div>
+      <button type="submit" class="btn-submit" id="submitBtn">SAVE GIG</button>
+    </form>
+    <div id="status"></div>
+
+    <div class="gigs-list">
+      <h3>Manage Gigs</h3>
+      <div id="gigsListContainer">Loading...</div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { addGig, uploadGigImage, getAllGigs, deleteGig } from '../js/gigs-firebase.js';
+
+    // SIMPLE PASSWORD GATE
+    // Replace 'imprint2026' with your desired password
+    const ADMIN_PASSWORD = 'imprint2026';
+
+    window.checkLogin = () => {
+      const pwd = document.getElementById('adminPwd').value;
+      if (pwd === ADMIN_PASSWORD) {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('adminBox').style.display = 'block';
+        loadGigsList();
+      } else {
+        document.getElementById('loginStatus').innerText = 'Incorrect password';
+      }
+    };
+
+    const form = document.getElementById('gigForm');
+    const status = document.getElementById('status');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const fileInput = document.getElementById('gImage');
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'UPLOADING IMAGE...';
+      status.className = 'status-loading';
+      status.innerText = 'Uploading image to Firebase...';
+
+      try {
+        // 1. Upload Image
+        const imageUrl = await uploadGigImage(file);
+
+        submitBtn.innerText = 'SAVING GIG...';
+        status.innerText = 'Saving gig details...';
+
+        // 2. Save Gig
+        const gigData = {
+          title: document.getElementById('gTitle').value,
+          date: document.getElementById('gDate').value,
+          time: document.getElementById('gTime').value,
+          venue: document.getElementById('gVenue').value,
+          bookingUrl: document.getElementById('gBooking').value,
+          image: imageUrl
+        };
+
+        await addGig(gigData);
+
+        status.className = 'status-success';
+        status.innerText = 'Gig added successfully!';
+        form.reset();
+        
+        loadGigsList(); // Refresh list
+
+      } catch (error) {
+        console.error(error);
+        status.className = 'status-error';
+        status.innerText = 'Error: ' + error.message;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'SAVE GIG';
+        setTimeout(() => { if (status.className === 'status-success') status.innerText = ''; }, 3000);
+      }
+    });
+
+    // LOAD GIGS FOR MANAGEMENT
+    async function loadGigsList() {
+      const container = document.getElementById('gigsListContainer');
+      try {
+        const gigs = await getAllGigs();
+        if (gigs.length === 0) {
+          container.innerHTML = '<p style="color:var(--muted)">No gigs found.</p>';
+          return;
+        }
+        
+        container.innerHTML = gigs.map(g => `
+          <div class="gig-row" id="row-${g.id}">
+            <div>
+              <div class="gig-row-title">${g.title}</div>
+              <div class="gig-row-date">${g.date}</div>
+            </div>
+            <button class="btn-del" onclick="delGig('${g.id}')">Delete</button>
+          </div>
+        `).join('');
+      } catch (e) {
+        container.innerHTML = `<p style="color:red">Error loading gigs: ${e.message}</p>`;
+      }
+    }
+
+    window.delGig = async (id) => {
+      if (confirm('Delete this gig?')) {
+        try {
+          await deleteGig(id);
+          document.getElementById(`row-${id}`).remove();
+        } catch (e) {
+          alert('Error deleting: ' + e.message);
+        }
+      }
+    };
+  </script>
+</body>
+</html>

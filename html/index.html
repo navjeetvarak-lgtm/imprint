@@ -574,77 +574,8 @@
       <p class="kicker reveal">// 03 — Tour</p>
       <h2 class="reveal">Upcoming <span class="grad">Gigs</span></h2>
     </div>
-    <div class="events-grid">
-      <div class="event-card reveal">
-        <div class="event-date-block">
-          <div class="event-day">12</div>
-          <div class="event-month">May '26</div>
-        </div>
-        <div class="event-info">
-          <h3>Strobe Presents: Neon Tide</h3>
-          <p>Anjuna Beach Club · Goa · 10:00 PM</p>
-        </div>
-        <a href="https://wa.me/919923580022?text=Hi%2C%20RSVP%20for%20Neon%20Tide%20May%2012." target="_blank"
-          class="event-tag">RSVP</a>
-      </div>
-      <div class="event-card reveal" style="transition-delay:0.1s">
-        <div class="event-date-block">
-          <div class="event-day">24</div>
-          <div class="event-month">May '26</div>
-        </div>
-        <div class="event-info">
-          <h3>Flashlab Live</h3>
-          <p>Hilltop · Vagator, Goa · 9:00 PM</p>
-        </div>
-        <a href="https://wa.me/919923580022?text=Hi%2C%20RSVP%20for%20Flashlab%20Live%20May%2024." target="_blank"
-          class="event-tag">RSVP</a>
-      </div>
-      <div class="event-card reveal" style="transition-delay:0.2s">
-        <div class="event-date-block">
-          <div class="event-day">07</div>
-          <div class="event-month">Jun '26</div>
-        </div>
-        <div class="event-info">
-          <h3>Sunset Sessions Vol. 10</h3>
-          <p>Sinq Beach Club · Candolim, Goa · 6:00 PM</p>
-        </div>
-        <a href="https://wa.me/919923580022?text=Hi%2C%20RSVP%20for%20Sunset%20Sessions%20Vol%2010." target="_blank"
-          class="event-tag">RSVP</a>
-      </div>
-      <div class="event-card reveal" style="transition-delay:0.3s">
-        <div class="event-date-block">
-          <div class="event-day">21</div>
-          <div class="event-month">Jun '26</div>
-        </div>
-        <div class="event-info">
-          <h3>Imprint × Bombay Underground</h3>
-          <p>Antisocial · Mumbai · 11:00 PM</p>
-        </div>
-        <a href="https://wa.me/919923580022?text=Hi%2C%20RSVP%20for%20Imprints%20x%20Bombay%20Underground."
-          target="_blank" class="event-tag">RSVP</a>
-      </div>
-      <div class="event-card reveal" style="transition-delay:0.4s;opacity:0.5;">
-        <div class="event-date-block" style="background:rgba(255,255,255,0.04);border-color:var(--border);">
-          <div class="event-day" style="background:none;-webkit-text-fill-color:var(--muted);">03</div>
-          <div class="event-month">Nov '24</div>
-        </div>
-        <div class="event-info">
-          <h3>Afters at Aura Beach Cafe</h3>
-          <p>Aura Beach Cafe · Anjuna, Goa</p>
-        </div>
-        <span class="event-tag past">Played</span>
-      </div>
-      <div class="event-card reveal" style="transition-delay:0.5s;opacity:0.5;">
-        <div class="event-date-block" style="background:rgba(255,255,255,0.04);border-color:var(--border);">
-          <div class="event-day" style="background:none;-webkit-text-fill-color:var(--muted);">03</div>
-          <div class="event-month">Nov '24</div>
-        </div>
-        <div class="event-info">
-          <h3>Sunset Stories · Baja, Benaulim</h3>
-          <p>Baja Beach Club · Benaulim, Goa</p>
-        </div>
-        <span class="event-tag past">Played</span>
-      </div>
+    <div class="events-grid" id="gigsFirebaseContainer">
+      <!-- Rendered by Firebase -->
     </div>
     <div style="margin-top:40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
       <a href="https://wa.me/919923580022?text=Hi%20Imprints%2C%20I%20would%20like%20to%20enquire%20about%20upcoming%20gigs."
@@ -1015,6 +946,7 @@
   </footer>
 
   <a href="#home" id="backToTop">↑</a>
+  <script type="module" src="js/gigs-firebase.js"></script>
   <script src="../js/main.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {

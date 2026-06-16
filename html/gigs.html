@@ -108,180 +108,15 @@
 
     <!-- UPCOMING -->
     <div id="upcomingTab" style="display:none;">
-      <div class="countdown-wrap reveal">
-        <p class="countdown-label">Next Event Countdown</p>
-        <div class="countdown-boxes">
-          <div class="cd-box">
-            <div class="cd-num" id="cdDays">00</div>
-            <div class="cd-unit">DAYS</div>
-          </div>
-          <div class="cd-sep">:</div>
-          <div class="cd-box">
-            <div class="cd-num" id="cdHours">00</div>
-            <div class="cd-unit">HOURS</div>
-          </div>
-          <div class="cd-sep">:</div>
-          <div class="cd-box">
-            <div class="cd-num" id="cdMins">00</div>
-            <div class="cd-unit">MINS</div>
-          </div>
-          <div class="cd-sep">:</div>
-          <div class="cd-box">
-            <div class="cd-num" id="cdSecs">00</div>
-            <div class="cd-unit">SECS</div>
-          </div>
-        </div>
+      <div id="upcomingGigsContainer">
+        <!-- Rendered by Firebase -->
       </div>
-      <p
-        style="text-align:center;font-family:var(--font-mono);font-size:0.8rem;color:var(--muted);letter-spacing:0.15em;">
-        Stay tuned for upcoming announcements</p>
     </div>
 
     <!-- PAST GIGS -->
     <div id="pastTab">
-      <!-- Gig 1 -->
-      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--purple)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <img src="../assets/gig1.jpeg" alt="Aura Beach Cafe" />
-        <div class="past-gig-content">
-          <div>
-            <div class="past-gig-date-pill">Sat 2 Nov 2024</div>
-            <h3 class="past-gig-title">Aura Beach Cafe · Anjuna</h3>
-            <div class="past-gig-meta"><span>📅 2 Nov 2024</span><span>🕓 5PM Onwards</span><span>📍 Aura, Anjuna,
-                Goa</span><span>🎵 Organic House</span></div>
-            <p class="past-gig-desc">A mesmerising sunset session at Aura Beach Cafe, Anjuna — blending organic house
-              with Goa's natural coastline energy.</p>
-          </div>
-          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
-        </div>
-      </div>
-      <!-- Gig 2 -->
-      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--blue)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <img src="../assets/gig2.jpeg" alt="Sunday Sunset Stories Baja" />
-        <div class="past-gig-content">
-          <div>
-            <div class="past-gig-date-pill">Sun 3 Nov 2024</div>
-            <h3 class="past-gig-title">Sunday Sunset Stories · Baja Beach Club</h3>
-            <div class="past-gig-meta"><span>📅 3 Nov 2024</span><span>🕓 4:30PM Onwards</span><span>📍 Baja, Trinity
-                Beach Road, Benaulim, Goa</span><span>🎵 Organic House</span></div>
-            <p class="past-gig-desc">Sunday Sunset Stories at Baja — a deep, hypnotic journey to close out the weekend
-              on the Benaulim beachfront.</p>
-          </div>
-          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
-        </div>
-      </div>
-      <!-- Gig 3 -->
-      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--pink)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <img src="../assets/gig3.jpeg" alt="Hilltop Vagator" />
-        <div class="past-gig-content">
-          <div> 
-            <div class="past-gig-date-pill">Sat 9 Nov 2024</div>
-            <h3 class="past-gig-title">Hilltop Festival · Vagator</h3>
-            <div class="past-gig-meta"><span>📅 9 Nov 2024</span><span>🕓 8PM Onwards</span><span>📍 Hilltop, Vagator,
-                Goa</span><span>🎵 Techno / Electronic</span></div>
-            <p class="past-gig-desc">Taking the stage at the legendary Hilltop, Vagator — one of Goa's most iconic
-              electronic music arenas.</p>
-          </div>
-          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
-        </div>
-      </div>
-      <!-- Gig 4 -->
-      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--gold)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <img src="../assets/gig4.jpeg" alt="Mayan Beach Club" />
-        <div class="past-gig-content">
-          <div>
-            <div class="past-gig-date-pill">Sun 24 Nov 2024</div>
-            <h3 class="past-gig-title">Mayan Beach Club · Goa</h3>
-            <div class="past-gig-meta"><span>📅 24 Nov 2024</span><span>🕓 3PM Onwards</span><span>📍 Mayan Beach Club,
-                Goa</span><span>🎵 Afro House</span></div>
-            <p class="past-gig-desc">A tribal, sun-soaked afternoon at Mayan Beach Club — afro grooves meeting Goa's
-              golden coastline.</p>
-          </div>
-          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
-        </div>
-      </div>
-      <!-- Gig 5 -->
-      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--purple)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <img src="../assets/gig5.jpeg" alt="Tikibab Benaulim" />
-        <div class="past-gig-content">
-          <div>
-            <div class="past-gig-date-pill">Sun 30 Nov 2025</div>
-            <h3 class="past-gig-title">Tikibab · Benaulim</h3>
-            <div class="past-gig-meta"><span>📅 30 Nov 2025</span><span>🕓 6PM Onwards</span><span>📍 Tikibab, Benaulim,
-                Goa</span><span>🎵 Deep / Organic House</span></div>
-            <p class="past-gig-desc">A live recording session at Tikibab, Benaulim — captured on Mixcloud, a hypnotic
-              hour of deep house and rolling grooves.</p>
-          </div>
-          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
-        </div>
-      </div>
-      <!-- Gig 6 -->
-      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--blue)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <img src="../assets/gig6.jpeg" alt="Sopon Canacona" />
-        <div class="past-gig-content">
-          <div>
-            <div class="past-gig-date-pill">Fri 20 Dec 2024</div>
-            <h3 class="past-gig-title">Sopon · Canacona</h3>
-            <div class="past-gig-meta"><span>📅 20 Dec 2024</span><span>🕓 9PM Onwards</span><span>📍 Sopon, Canacona,
-                Goa</span><span>🎵 House / Electronic</span></div>
-            <p class="past-gig-desc">Heading deep south to Canacona for a high-energy club night at Sopon — pure house
-              music in an electric atmosphere.</p>
-          </div>
-          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
-        </div>
-      </div>
-      <!-- Gig 7 -->
-      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--purple)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <img src="../assets/gig7.jpeg" alt="Sunday Sunset Stories Dec" />
-        <div class="past-gig-content">
-          <div>
-            <div class="past-gig-date-pill">Sun 29 Dec 2024</div>
-            <h3 class="past-gig-title">Sunday Sunset Stories · Imprint &amp; Rohit</h3>
-            <div class="past-gig-meta"><span>📅 29 Dec 2024</span><span>🕓 4:30PM Onwards</span><span>📍 Baja, Trinity
-                Beach Road, Benaulim, Goa</span><span>🎵 Organic House</span></div>
-            <p class="past-gig-desc">Sunday Sunset Stories at Baja featuring Imprint and Rohit — a double act bringing
-              deep, hypnotic sounds to the Benaulim beach.</p>
-          </div>
-          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
-        </div>
-      </div>
-      <!-- Gig 8 -->
-      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--gold)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <img src="../assets/gig8.jpeg" alt="Moments NYE Dynamo" />
-        <div class="past-gig-content">
-          <div>
-            <div class="past-gig-date-pill">28–31 Dec 2024</div>
-            <h3 class="past-gig-title">Moments — New Year Party 2025 · Dynamo</h3>
-            <div class="past-gig-meta"><span>📅 28–31 Dec 2024</span><span>🕓 5:00PM Onwards</span><span>📍 Dynamo,
-                Vagator, Goa</span><span>🎵 Electronic</span></div>
-            <p class="past-gig-desc">Mehandi Hasan with DJ Imprint — New Year celebrations at Dynamo Vagator across 4
-              nights, ringing in 2025 with style.</p>
-          </div>
-          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
-        </div>
-      </div>
-      <!-- Gig 9 -->
-      <div class="past-gig-card reveal" onmouseover="this.style.borderColor='var(--purple)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <img src="../assets/gig9.jpeg" alt="Avtar Bar Chapora" />
-        <div class="past-gig-content">
-          <div>
-            <div class="past-gig-date-pill">Sun 12 Jan 2025</div>
-            <h3 class="past-gig-title">Avtar Bar &amp; Kitchen · Chapora</h3>
-            <div class="past-gig-meta"><span>📅 12 Jan 2025</span><span>🕓 10PM Onwards</span><span>📍 Chapora Street,
-                20m from Chapora Chapel, Goa</span><span>🎵 DJ + Sitar Fusion</span></div>
-            <p class="past-gig-desc">Mehandi Hasan on Indian Classical Sitar with DJ Imprint — a mesmerising fusion
-              night at Avtar Bar &amp; Kitchen, Chapora.</p>
-          </div>
-          <div class="past-gig-badge"><span>✓</span><span>Played</span></div>
-        </div>
+      <div id="pastGigsContainer">
+        <!-- Rendered by Firebase -->
       </div>
 
       <div style="margin-top:48px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
@@ -319,6 +154,7 @@
   </footer>
 
   <a href="#" id="backToTop">↑</a>
+   <script type="module" src="../js/gigs-firebase.js"></script>
    <script src="../js/main.js"></script>
 
 
