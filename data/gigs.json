@@ -1,0 +1,122 @@
+[
+  {
+    "id": "g1",
+    "title": "Aura Beach Cafe · Anjuna",
+    "description": "A mesmerising sunset session at Aura Beach Cafe, Anjuna — blending organic house with Goa's natural coastline energy.",
+    "category": "Organic House",
+    "date": "2024-11-02",
+    "datePill": "Sat 2 Nov 2024",
+    "time": "5PM Onwards",
+    "location": "Aura, Anjuna, Goa",
+    "imageUrl": "../assets/gig1.jpeg",
+    "status": "past"
+  },
+  {
+    "id": "g2",
+    "title": "Sunday Sunset Stories · Baja Beach Club",
+    "description": "Sunday Sunset Stories at Baja — a deep, hypnotic journey to close out the weekend on the Benaulim beachfront.",
+    "category": "Organic House",
+    "date": "2024-11-03",
+    "datePill": "Sun 3 Nov 2024",
+    "time": "4:30PM Onwards",
+    "location": "Baja, Trinity Beach Road, Benaulim, Goa",
+    "imageUrl": "../assets/gig2.jpeg",
+    "status": "past"
+  },
+  {
+    "id": "g3",
+    "title": "Hilltop Festival · Vagator",
+    "description": "Taking the stage at the legendary Hilltop, Vagator — one of Goa's most iconic electronic music arenas.",
+    "category": "Techno / Electronic",
+    "date": "2024-11-09",
+    "datePill": "Sat 9 Nov 2024",
+    "time": "8PM Onwards",
+    "location": "Hilltop, Vagator, Goa",
+    "imageUrl": "../assets/gig3.jpeg",
+    "status": "past"
+  },
+  {
+    "id": "g4",
+    "title": "Mayan Beach Club · Goa",
+    "description": "A tribal, sun-soaked afternoon at Mayan Beach Club — afro grooves meeting Goa's golden coastline.",
+    "category": "Afro House",
+    "date": "2024-11-24",
+    "datePill": "Sun 24 Nov 2024",
+    "time": "3PM Onwards",
+    "location": "Mayan Beach Club, Goa",
+    "imageUrl": "../assets/gig4.jpeg",
+    "status": "past"
+  },
+  {
+    "id": "g5",
+    "title": "Tikibab · Benaulim",
+    "description": "A live recording session at Tikibab, Benaulim — captured on Mixcloud, a hypnotic hour of deep house and rolling grooves.",
+    "category": "Deep / Organic House",
+    "date": "2025-11-30",
+    "datePill": "Sun 30 Nov 2025",
+    "time": "6PM Onwards",
+    "location": "Tikibab, Benaulim, Goa",
+    "imageUrl": "../assets/gig5.jpeg",
+    "status": "past"
+  },
+  {
+    "id": "g6",
+    "title": "Sopon · Canacona",
+    "description": "Heading deep south to Canacona for a high-energy club night at Sopon — pure house music in an electric atmosphere.",
+    "category": "House / Electronic",
+    "date": "2024-12-20",
+    "datePill": "Fri 20 Dec 2024",
+    "time": "9PM Onwards",
+    "location": "Sopon, Canacona, Goa",
+    "imageUrl": "../assets/gig6.jpeg",
+    "status": "past"
+  },
+  {
+    "id": "g7",
+    "title": "Sunday Sunset Stories · Imprint & Rohit",
+    "description": "Sunday Sunset Stories at Baja featuring Imprint and Rohit — a double act bringing deep, hypnotic sounds to the Benaulim beach.",
+    "category": "Organic House",
+    "date": "2024-12-29",
+    "datePill": "Sun 29 Dec 2024",
+    "time": "4:30PM Onwards",
+    "location": "Baja, Trinity Beach Road, Benaulim, Goa",
+    "imageUrl": "../assets/gig7.jpeg",
+    "status": "past"
+  },
+  {
+    "id": "g8",
+    "title": "Moments — New Year Party 2025 · Dynamo",
+    "description": "Mehandi Hasan with DJ Imprint — New Year celebrations at Dynamo Vagator across 4 nights, ringing in 2025 with style.",
+    "category": "Electronic",
+    "date": "2024-12-28",
+    "datePill": "28–31 Dec 2024",
+    "time": "5:00PM Onwards",
+    "location": "Dynamo, Vagator, Goa",
+    "imageUrl": "../assets/gig8.jpeg",
+    "status": "past"
+  },
+  {
+    "id": "g9",
+    "title": "Avtar Bar & Kitchen · Chapora",
+    "description": "Mehandi Hasan on Indian Classical Sitar with DJ Imprint — a mesmerising fusion night at Avtar Bar & Kitchen, Chapora.",
+    "category": "DJ + Sitar Fusion",
+    "date": "2025-01-12",
+    "datePill": "Sun 12 Jan 2025",
+    "time": "10PM Onwards",
+    "location": "Chapora Street, 20m from Chapora Chapel, Goa",
+    "imageUrl": "../assets/gig9.jpeg",
+    "status": "past"
+  },
+  {
+    "id": "85d995aa-f356-4aad-8ff8-efcfd09c092a",
+    "title": "party",
+    "description": "book it as soon asa possible",
+    "category": "DJ + Sitar Fusion",
+    "date": "2026-07-12",
+    "datePill": "Sun 12 Jul 2026",
+    "time": "5pm",
+    "location": "colva beach",
+    "imageUrl": "../assets/1781684086462-504862201_10231024545266043_865512912236943557_n.jpg",
+    "status": "upcoming"
+  }
+]

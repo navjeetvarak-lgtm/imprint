@@ -340,6 +340,55 @@ function initPageSpecifics() {
     };
   }
 
+  /* ── SOUNDCLOUD ── */
+  if (document.getElementById('scViz')) {
+    const scApiScript = document.createElement('script'); scApiScript.src = 'https://w.soundcloud.com/player/api.js'; document.head.appendChild(scApiScript);
+    let scWidget = null, scVizInterval = null, scIsPlaying = false, scDuration = 0;
+
+    const scViz = document.getElementById('scViz');
+    for (let i = 0; i < 50; i++) { const b = document.createElement('div'); b.className = 'mc-viz-bar'; scViz.appendChild(b); }
+    function animateScBars() { scViz.querySelectorAll('.mc-viz-bar').forEach(b => { b.style.height = (Math.random() * 56 + 4) + 'px'; }); }
+    function startScViz() { if (scVizInterval) clearInterval(scVizInterval); scVizInterval = setInterval(animateScBars, 120); scViz.classList.add('active'); document.getElementById('scDisc').classList.add('mc-spinning'); }
+    function stopScViz() { if (scVizInterval) { clearInterval(scVizInterval); scVizInterval = null; } scViz.querySelectorAll('.mc-viz-bar').forEach(b => b.style.height = '4px'); scViz.classList.remove('active'); document.getElementById('scDisc').classList.remove('mc-spinning'); }
+    window.updateScPlayBtn = function () { const btn = document.getElementById('scPlayBtn'); if (btn) btn.textContent = scIsPlaying ? '⏸' : '▶'; }
+
+    window.playScTrack = function (title, sub, trackId, num) {
+      document.getElementById('scTitle').textContent = title;
+      document.getElementById('scSub').textContent = sub;
+      const area = document.getElementById('scEmbedArea');
+      area.innerHTML = `<iframe id="scIframe" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${trackId}&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"></iframe>`;
+      
+      setTimeout(() => {
+        const iframe = document.getElementById('scIframe');
+        if (window.SC) {
+          scWidget = SC.Widget(iframe);
+          scWidget.bind(SC.Widget.Events.READY, function() {
+            scWidget.bind(SC.Widget.Events.PLAY_PROGRESS, function(evt) {
+              const pos = evt.currentPosition;
+              scWidget.getDuration(function(dur) {
+                scDuration = dur;
+                const pct = dur > 0 ? (pos / dur) * 100 : 0;
+                document.getElementById('scFill').style.width = pct + '%';
+                const fmt = s => `${Math.floor(s/1000 / 60)}:${String(Math.floor((s/1000) % 60)).padStart(2, '0')}`;
+                document.getElementById('scTimeNow').textContent = fmt(pos);
+                document.getElementById('scTimeDur').textContent = fmt(dur);
+              });
+            });
+            scWidget.bind(SC.Widget.Events.PLAY, function() { scIsPlaying = true; startScViz(); window.updateScPlayBtn(); });
+            scWidget.bind(SC.Widget.Events.PAUSE, function() { scIsPlaying = false; stopScViz(); window.updateScPlayBtn(); });
+            scWidget.bind(SC.Widget.Events.FINISH, function() { scIsPlaying = false; stopScViz(); window.updateScPlayBtn(); });
+          });
+        }
+      }, 500);
+
+      [1, 2, 3, 4].forEach(n => { const t = document.getElementById('scT' + n); if (t) t.classList.remove('active'); });
+      const active = document.getElementById('scT' + num); if (active) active.classList.add('active');
+      startScViz();
+    };
+    window.scTogglePlay = function () { if (!scWidget) return; scWidget.toggle(); };
+    window.scSeek = function (e) { if (!scWidget || scDuration === 0) return; const bar = document.getElementById('scSeekBar'); const rect = bar.getBoundingClientRect(); const pct = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)); scWidget.seekTo(pct * scDuration); };
+  }
+
   /* ── SHOWCASE ── */
   if (document.getElementById('carousel3d')) {
     const carousel = document.getElementById('carousel3d');
